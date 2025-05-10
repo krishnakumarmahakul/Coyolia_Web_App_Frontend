@@ -66,7 +66,7 @@ function App() {
           <AllpagePopup />
         </main>
         <Footer />
-        <Contactus/>
+        
       </div>
     </Router>
   );
