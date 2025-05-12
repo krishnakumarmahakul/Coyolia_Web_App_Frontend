@@ -7,7 +7,7 @@ const SolutionsTalent = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="py-16 px-4"
+      className="py-16 min-h-screen px-4"
     >
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold text-[#21204C] mb-8">AI in Talent Acquisition & HR</h1>

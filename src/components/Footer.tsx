@@ -53,15 +53,15 @@ const Footer: React.FC = () => {
             <div className="space-y-4 text-sm">
               <p className="flex items-center text-gray-300">
                 <Phone className="w-5 h-5 mr-2 text-[#c3b3fa]" />
-                +91 XXXXXXXXXX
+                +91 9885001831
               </p>
               <p className="flex items-center text-gray-300">
                 <Mail className="w-5 h-5 mr-2 text-[#c3b3fa]" />
-                contact@coyolia.com
+                info@coyolia.com
               </p>
               <p className="flex items-center text-gray-300">
                 <MapPin className="w-5 h-5 mr-2 text-[#c3b3fa]" />
-                123 AI Street, Tech City
+                #405, Aakruti Nivas Apartments, Czech Colony Hyderabad,500018
               </p>
             </div>
           </div>
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
           {[Facebook, Instagram, Twitter, Linkedin].map((Icon, idx) => (
             <a
               key={idx}
-              href="#"
+              href="https://www.instagram.com/coyoliatech/?utm_source=qr&igsh=MWw1d2hsbGdkdzRreQ%3D%3D"
               className="text-white hover:text-[#c3b3fa] transition-transform transform hover:scale-110 duration-300"
               aria-label="Social Media Link"
             >

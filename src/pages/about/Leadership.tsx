@@ -9,7 +9,7 @@ const AboutLeadership = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="py-16 px-4 bg-white text-[#21204C]"
+      className="py-16 px-4 min-h-screen bg-white text-[#21204C]"
     >
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-10 border-b-4 border-[#21204C] inline-block pb-2">

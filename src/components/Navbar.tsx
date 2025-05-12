@@ -57,17 +57,14 @@ const Navbar: React.FC = () => {
   );
 
   return (
-    <nav
-      ref={navbarRef}
-      className="bg-gradient-to-r from-[#7655b7] to-[#21204C] text-white"
-    >
+    <nav ref={navbarRef} className="bg-white text-[#21204C] shadow-md">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center space-x-2">
             <img
               src={coyoliaLogo}
               alt="COYOLIA Logo"
-              className="w-30 h-12 object-contain rounded-lg bg-white opacity-75 shadow-md ring-2 ring-white/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:opacity-100"
+              className="h-16 object-contain transition-all duration-300 ease-in-out hover:scale-110"
             />
           </Link>
 
@@ -75,16 +72,24 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex space-x-4">
             {menuItems.map((item) => (
               <div key={item.path} className="relative group">
-                <button
-                  className="px-3 py-2 rounded-md text-base font-medium hover:text-[#7655b7] flex items-center"
-                  onClick={() => toggleSubmenu(item.title)}
-                >
+                <button className="px-3 py-2 rounded-md text-lg font-medium group-hover:text-[#7655b7] flex items-center pointer-events-none">
                   {item.title}
                   {item.submenu && <ChevronDown className="ml-1 w-4 h-4" />}
                 </button>
-                {item.submenu &&
-                  activeSubmenu === item.title &&
-                  renderSubmenu(item.submenu)}
+
+                {item.submenu && (
+                  <div className="absolute left-0 mt-2 w-40 bg-white text-[#21204C] rounded-md shadow-lg opacity-0 group-hover:opacity-100 pointer-events-auto transition-opacity duration-200 z-10">
+                    {item.submenu.map((subItem) => (
+                      <Link
+                        key={subItem.path}
+                        to={subItem.path}
+                        className="block px-4 py-2 text-base hover:bg-[#f0f0f0] hover:text-[#7655b7]"
+                      >
+                        {subItem.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -95,26 +100,22 @@ const Navbar: React.FC = () => {
           </button>
         </div>
 
-        {/* Mobile Menu with Gradient Background */}
+        {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4 bg-gradient-to-r from-[#21204C] to-[#7655b7]">
+          <div className="md:hidden pb-4 bg-white text-[#21204C]">
             {menuItems.map((item) => (
               <div key={item.path}>
-                <button
-                  className="w-full text-left px-3 py-2 text-base font-medium hover:text-[#7655b7] flex items-center justify-between"
-                  onClick={() => toggleSubmenu(item.title)}
-                >
+                <div className="w-full text-left px-3 py-2 text-base font-medium flex items-center justify-between">
                   {item.title}
-                  {item.submenu && <ChevronDown className="ml-1 w-4 h-4" />}
-                </button>
-                {item.submenu && activeSubmenu === item.title && (
+                </div>
+                {item.submenu && (
                   <div className="pl-4 space-y-1">
                     {item.submenu.map((subItem) => (
                       <Link
                         key={subItem.path}
                         to={subItem.path}
                         className="block px-3 py-2 text-base font-medium hover:text-[#7655b7]"
-                        onClick={() => handleMenuItemClick(subItem.path)} // Close the menu after clicking a submenu item
+                        onClick={() => handleMenuItemClick(subItem.path)}
                       >
                         {subItem.title}
                       </Link>

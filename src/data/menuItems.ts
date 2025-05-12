@@ -6,11 +6,6 @@ export const menuItems: MenuItem[] = [
     path: '/',
   },
   {
-    title: 'ContactUs',
-    path: '/contactus'
-    
-  },
-  {
     title: 'About Us',
     path: '/about',
     submenu: [
@@ -45,6 +40,11 @@ export const menuItems: MenuItem[] = [
       { title: 'Webinars', path: '/insights/webinars' },
       { title: 'Events', path: '/insights/events' },
     ],
+  },
+  {
+    title: 'ContactUs',
+    path: '/contactus'
+    
   },
   {
     title: 'Industries',

@@ -27,6 +27,8 @@ import PaidSession from './pages/services/paid-session';
 import Contactus from './pages/contactus/Contactus';
 import Blogadmin from './pages/insights/blogadmin';
 import { AnimatePresence } from 'framer-motion';
+import Editech from './pages/industries/edtech';
+import Services from './pages/services/services';
 
 function App() {
   return (
@@ -57,6 +59,9 @@ function App() {
               <Route path="/services/counselor-login" element={<Counselorlogin />} />
               <Route path="/services/counselor-dashboard" element={<CounselorDashboard />} />
               <Route path="/services/paid-session" element={<PaidSession />} />
+              <Route path='/industries/edtech' element={<Editech/>}/>
+              <Route path='/industries/banking' element={<Editech/>}/>
+              <Route path='/industries/edtech' element={<Editech/>}/>
               <Route path="/contactus" element={<Contactus />} />
               <Route path='/blogadmin' element={<Blogadmin/>}></Route>
             </Routes>
@@ -66,7 +71,6 @@ function App() {
           <AllpagePopup />
         </main>
         <Footer />
-        
       </div>
     </Router>
   );

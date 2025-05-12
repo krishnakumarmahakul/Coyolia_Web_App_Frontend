@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import AvinashKulkarni from "../assets/Avinash Kulkarni.jpg";
+import RaviKant from "../assets/Ravikanth Taduri.jpg";
+import cto from "../assets/Cto.jpg";
+
 import {
   ArrowRight,
   Brain,
@@ -7,60 +11,71 @@ import {
   BarChart as ChartBar,
   BookOpen,
   Linkedin,
-} from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import Services from "./services/services";
+import Testimonies from "./Testimonials/Testimonies";
+import Contactmail from "./Contactmail/Contactmail";
 
 const Home = () => {
   const features = [
     {
       icon: Brain,
-      title: 'Smart Career Assessment',
+      title: "Smart Career Assessment",
       description:
-        'AI-powered insights to match your skills and interests with the best career options.',
+        "AI-powered insights to match your skills and interests with the best career options.",
     },
     {
       icon: ChartBar,
-      title: 'Performance Dashboard',
+      title: "Performance Dashboard",
       description:
-        'Track your skill development, job applications, and career progress.',
+        "Track your skill development, job applications, and career progress.",
     },
     {
       icon: Target,
-      title: 'AI-Powered HR Solutions',
+      title: "AI-Powered HR Solutions",
       description:
-        'Automate hiring and talent acquisition with smart AI tools.',
+        "Automate hiring and talent acquisition with smart AI tools.",
     },
     {
       icon: BookOpen,
-      title: 'Learning Hub',
+      title: "Learning Hub",
       description:
-        'Access curated resources and mentorship programs to enhance your skills.',
+        "Access curated resources and mentorship programs to enhance your skills.",
     },
   ];
 
   const founders = [
     {
-      name: 'Avinash Kulkarni',
-      title: 'Founder & CEO',
-      image: '/founder.png',
+      name: "Avinash Kulkarni",
+      title: "Founder & CEO",
+      image: AvinashKulkarni,
       description:
-        'With 29 years of experience in leading global corporations like Xerox, Hitachi, RIL, and IL&FS, Avinash Kulkarni brings a wealth of expertise to Coyolia Technologies. His diverse background spans the not-for-profit sector and dynamic startup environments. Avinash is a recognized expert in cloud computing, IT infrastructure, sales training, and forging global alliances, driving innovation and success across various industries.',
-      linkedin: 'https://www.linkedin.com/in/nandan-nilekani/',
+        "With 29 years of experience in leading global corporations like Xerox, Hitachi, RIL, and IL&FS, Avinash Kulkarni brings a wealth of expertise to Coyolia Technologies. His diverse background spans the not-for-profit sector and dynamic startup environments. Avinash is a recognized expert in cloud computing, IT infrastructure, sales training, and forging global alliances, driving innovation and success across various industries.",
+      linkedin: "https://www.linkedin.com/in/avinash-kulkarni-2257375/",
     },
     {
-      name: 'Ravikanth Taduri',
-      title: 'Co-Founder & HR Head',
-      image: '/founder1.png',
+      name: "Ravikanth Taduri",
+      title: "Co-Founder & HR Head",
+      image: RaviKant,
       description:
-        'With 21 years of experience in mid-market companies, Ravikanth Taduri has excelled as a Head of HR and business partner. Ravikanth specializes in developing and implementing SOPs, cultivating organisational culture, and building strong foundations for IT and ITES companies.',
-      linkedin: 'https://www.linkedin.com/in/jains/',
+        "With 21 years of experience in mid-market companies, Ravikanth Taduri has excelled as a Head of HR and business partner. Ravikanth specializes in developing and implementing SOPs, cultivating organisational culture, and building strong foundations for IT and ITES companies.",
+      linkedin: "https://www.linkedin.com/in/raviekant/",
+    },
+    {
+      name: "Aniruddha Deswandikar ",
+      title: "Chief Technology Officer",
+      image: cto,
+      description:
+        "Seasoned technologist with 30 years of experience across startups, dotcoms, and large enterprises. Author of Engineering Data Mesh in Azure Cloud (https://a.co/d/4Xw62DQ). For 18 years, helped Microsoft’s enterprise clients and partners solve complex challenges through innovative architectures and scalable solutions. Led a Technology Showcase Center for a decade and managed senior teams of developers and architects. Known for fostering creativity, challenging the status quo, and aligning teams with strategic goals.",
+      linkedin: "https://www.linkedin.com/in/anideswandikar/",
     },
   ];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const ReadMore = ({ text, limit = 200 }:any) => {
+  const ReadMore = ({ text, limit = 200 }: any) => {
     const [expanded, setExpanded] = useState(false);
     return (
       <>
@@ -72,7 +87,7 @@ const Home = () => {
             onClick={() => setExpanded(!expanded)}
             className="text-sm text-[#7655b7] mt-2 hover:underline"
           >
-            {expanded ? 'Read less' : 'Read more'}
+            {expanded ? "Read less" : "Read more"}
           </button>
         )}
       </>
@@ -87,54 +102,52 @@ const Home = () => {
       transition={{ duration: 0.5 }}
     >
       {/* Hero Section */}
-      <section
-  className="bg-gradient-to-r from-[#21204C] to-[#7655b7] text-white py-20"
->
-  <div className="max-w-7xl mx-auto px-4">
-    <div className="grid md:grid-cols-2 gap-12 items-center">
-      <motion.div
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ delay: 0.2 }}
-      >
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          Your AI-Powered Career Companion
-        </h1>
-        <p className="text-xl mb-8">
-          Empowering careers with innovation & AI. Transform your
-          professional journey with data-driven insights and personalized
-          guidance.
-        </p>
-        <div className="space-x-4">
-          <Link
-            to="/get-started"
-            className="bg-[#7655b7] hover:bg-[#634a99] px-6 py-3 rounded-full inline-flex items-center transition-colors"
-          >
-            Get Started
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Link>
-          <Link
-            to="/about"
-            className="border border-white hover:bg-white hover:text-[#21204C] px-6 py-3 rounded-full inline-flex items-center transition-colors"
-          >
-            Learn More
-          </Link>
+      <section className="bg-gradient-to-r h-[80vh] from-[#21204C] to-[#7655b7] text-white py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Your AI-Powered Career Companion
+              </h1>
+              <p className="text-xl mb-8">
+                Empowering careers with innovation & AI. Transform your
+                professional journey with data-driven insights and personalized
+                guidance.
+              </p>
+              <div className="space-x-4">
+                <Link
+                  to="/services/career-counseling"
+                  className="bg-[#7655b7] hover:bg-[#634a99] px-6 py-3 rounded-full inline-flex items-center transition-colors"
+                >
+                  Get Started
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+                <Link
+                  to="/about"
+                  className="border border-white hover:bg-white hover:text-[#21204C] px-6 py-3 rounded-full inline-flex items-center transition-colors"
+                >
+                  Learn More
+                </Link>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="Team collaboration"
+                className="rounded-lg shadow-xl"
+              />
+            </motion.div>
+          </div>
         </div>
-      </motion.div>
-      <motion.div
-        initial={{ x: 100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ delay: 0.4 }}
-      >
-        <img
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-          alt="Team collaboration"
-          className="rounded-lg shadow-xl"
-        />
-      </motion.div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Features Section */}
       <section className="py-20">
@@ -181,16 +194,16 @@ const Home = () => {
         <div className="max-w-6xl mx-auto grid gap-16 text-center">
           {[
             {
-              title: 'Our Vision',
-              text: 'We envision a world full of opportunity, powered by digital public goods and open-source innovation. At Coyolia Technologies, we aim to reduce corruption, tackle global challenges, and uplift communities through Indian and global IP.',
+              title: "Our Vision",
+              text: "We envision a world full of opportunity, powered by digital public goods and open-source innovation. At Coyolia Technologies, we aim to reduce corruption, tackle global challenges, and uplift communities through Indian and global IP.",
             },
             {
-              title: 'Our Mission',
-              text: 'As Digital Ambassadors, we support and scale open-source projects by collaborating with the Government of India and DPGA. We\'re committed to skill-building programs for youth in Ethiopia, India, and African Union nations.',
+              title: "Our Mission",
+              text: "As Digital Ambassadors, we support and scale open-source projects by collaborating with the Government of India and DPGA. We're committed to skill-building programs for youth in Ethiopia, India, and African Union nations.",
             },
             {
-              title: 'Our Values',
-              text: 'Our spirit thrives on youth-driven energy, fearless innovation, and Indo-African friendship. We champion cultural exchange, tech education, and ethical development of open-source technologies across borders.',
+              title: "Our Values",
+              text: "Our spirit thrives on youth-driven energy, fearless innovation, and Indo-African friendship. We champion cultural exchange, tech education, and ethical development of open-source technologies across borders.",
             },
           ].map((item, idx) => (
             <motion.div
@@ -211,75 +224,83 @@ const Home = () => {
           ))}
         </div>
       </section>
+      <Services/>
 
       {/* Our Founders Section */}
       <section
-  className="py-20 bg-cover bg-center bg-no-repeat"
-  style={{
-    backgroundImage: 'url("/bg-texture.png")',
-  }}
->
-  <div className="max-w-6xl mx-auto px-6">
-    {/* Hanging Board Container */}
-    <div className="flex justify-center relative mb-12 group">
-      {/* Ropes */}
-      <div className="absolute top-0 left-[33%] w-1 h-12 bg-[#21204C] z-10"></div>
-      <div className="absolute top-0 right-[33%] w-1 h-12 bg-[#21204C] z-10"></div>
-
-      {/* Motion Board */}
-      <motion.div
-        whileHover={{ y: -10, rotate: -1.5 }}
-        transition={{ type: "spring", stiffness: 160, damping: 12 }}
-        className="w-full bg-white border-4 border-[#7655b7] rounded-3xl shadow-2xl px-8 py-10 relative z-20"
+        className="py-20 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url("/bg-texture.png")',
+        }}
       >
-        {/* Decorative Pins */}
-        <div className="absolute -top-4 left-10 w-4 h-4 bg-[#7655b7] rounded-full border-2 border-white shadow-md"></div>
-        <div className="absolute -top-4 right-10 w-4 h-4 bg-[#21204C] rounded-full border-2 border-white shadow-md"></div>
+        <div className="max-w-6xl mx-auto px-6">
+          {/* Hanging Board Container */}
+          <div className="flex justify-center relative mb-12 group">
+            {/* Ropes */}
+            <div className="absolute top-0 left-[33%] w-1 h-12 bg-[#21204C] z-10"></div>
+            <div className="absolute top-0 right-[33%] w-1 h-12 bg-[#21204C] z-10"></div>
 
-        {/* Title */}
-        <h2 className="text-5xl font-extrabold text-center mb-12">
-          <span className="bg-gradient-to-r from-[#7655b7] to-[#21204C] text-transparent bg-clip-text">
-            Our Founders
-          </span>
-        </h2>
+            {/* Motion Board */}
+            <motion.div
+              transition={{ type: "spring", stiffness: 160, damping: 12 }}
+              className="w-full bg-white border-4 border-[#7655b7] rounded-3xl shadow-2xl px-8 py-10 relative z-20"
+            >
+              {/* Decorative Pins */}
+              <div className="absolute -top-4 left-10 w-4 h-4 bg-[#7655b7] rounded-full border-2 border-white shadow-md"></div>
+              <div className="absolute -top-4 right-10 w-4 h-4 bg-[#21204C] rounded-full border-2 border-white shadow-md"></div>
 
-        {/* Founders Slider */}
-        <Swiper
-          spaceBetween={30}
-          slidesPerView={1}
-          breakpoints={{
-            768: { slidesPerView: 2 },
-          }}
-        >
-          {founders.map((founder, idx) => (
-            <SwiperSlide key={idx}>
-              <div className="bg-[#f8f7fc] shadow-md rounded-xl p-6 text-center h-full flex flex-col justify-between">
-                <img
-                  src={founder.image}
-                  alt={founder.name}
-                  className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
-                />
-                <h3 className="text-xl font-semibold mb-1 text-[#21204C]">{founder.name}</h3>
-                <p className="text-sm text-gray-500 mb-3">{founder.title}</p>
-                <ReadMore text={founder.description} />
-                <a
-                  href={founder.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center text-[#0077B5] hover:text-[#005582] font-medium mt-3"
-                >
-                  <Linkedin className="w-5 h-5 mr-1" />
-                  LinkedIn
-                </a>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </motion.div>
-    </div>
-  </div>
-</section>
+              {/* Title */}
+              <h2 className="text-5xl font-extrabold text-center mb-12">
+                <span className="bg-gradient-to-r from-[#7655b7] to-[#21204C] text-transparent bg-clip-text">
+                  Our Founders
+                </span>
+              </h2>
+
+              {/* Founders Slider */}
+              <Swiper
+                spaceBetween={30}
+                slidesPerView={1}
+                breakpoints={{
+                  768: { slidesPerView: 2 },
+                  1024: { slidesPerView: 3 }, // Show 3 slides on large screens
+                }}
+              >
+                {founders.map((founder, idx) => (
+                  <SwiperSlide key={idx}>
+                    <div className="bg-[#f8f7fc] shadow-md rounded-xl p-6 text-center h-full flex flex-col justify-between">
+                      <img
+                        src={founder.image}
+                        alt={founder.name}
+                        className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
+                      />
+                      <h3 className="text-xl font-semibold mb-1 text-[#21204C]">
+                        {founder.name}
+                      </h3>
+                      <p className="text-sm text-gray-500 mb-3">
+                        {founder.title}
+                      </p>
+                      <ReadMore text={founder.description} />
+                      <a
+                        href={founder.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center text-[#0077B5] hover:text-[#005582] font-medium mt-3"
+                      >
+                        <Linkedin className="w-5 h-5 mr-1" />
+                        LinkedIn
+                      </a>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+      <Testimonies/>
+      <Contactmail/>
     </motion.div>
+    
   );
 };
 
