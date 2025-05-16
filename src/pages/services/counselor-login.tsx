@@ -1,5 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+const API_BASE_URL = "http://localhost:5000/api/v1/";
+axios.defaults.baseURL = API_BASE_URL;
+axios.defaults.withCredentials = true;
+
+interface LoginResponse {
+  success: boolean;
+  user?: { id: string; email: string };
+  message?: string;
+  isAuthenticated?: boolean;
+}
 
 const CounselorLogin = () => {
   const [showForm, setShowForm] = useState(false);
@@ -16,18 +28,39 @@ const CounselorLogin = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleLogin = (e: { preventDefault: () => void; }) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
 
-    // Hardcoded counselor credentials
-    const validEmail = 'sruti@gmail.com';
-    const validPassword = '1234';
+    if (!email || !password) {
+      setError('Please enter both email and password');
+      return;
+    }
 
-    if (email === validEmail && password === validPassword) {
-      // Redirect to counselor dashboard
-      navigate('/services/counselor-dashboard'); 
-    } else {
-      setError('Invalid Email or Password');
+    try {
+      const res = await axios.post<LoginResponse>('/admin/login', {
+        email,
+        password,
+      });
+
+      if (res.data.success) {
+        navigate('/services/counselor-dashboard');
+      } else {
+        setError(res.data.message || 'Login failed. Please try again.');
+      }
+    } catch (err: any) {
+      console.error('Login error:', err);
+      let errorMsg = 'Login failed. Please try again.';
+
+      if (err.response?.data?.message) {
+        errorMsg = err.response.data.message;
+      } else if (err.message === 'Network Error') {
+        errorMsg = 'Cannot connect to server. Please check your connection.';
+      } else if (err.request) {
+        errorMsg = 'No response from server. Please try again later.';
+      }
+
+      setError(errorMsg);
     }
   };
 

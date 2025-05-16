@@ -30,7 +30,7 @@ const Contactmail: React.FC = () => {
         
         emailjs.send(
             'service_2fjmap8', // Replace with your EmailJS service ID
-            'template_8h9xscs', // Replace with your EmailJS template ID
+            'template_3hibf3d', // Replace with your EmailJS template ID
             {
                 firstName: formData.firstName,
                 lastName: formData.lastName,

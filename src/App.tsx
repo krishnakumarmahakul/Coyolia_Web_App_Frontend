@@ -25,10 +25,10 @@ import Counselorlogin from './pages/services/counselor-login';
 import CounselorDashboard from './pages/services/counselor-dashboard';
 import PaidSession from './pages/services/paid-session';
 import Contactus from './pages/contactus/Contactus';
-import Blogadmin from './pages/insights/blogadmin';
+import BlogAdmin from './pages/insights/Blogadmin';
 import { AnimatePresence } from 'framer-motion';
 import Editech from './pages/industries/edtech';
-import Services from './pages/services/services';
+import Blogadmin from './pages/insights/Blogadmin';
 
 function App() {
   return (
@@ -38,7 +38,7 @@ function App() {
         <main className="flex-grow">
           <AnimatePresence mode="wait">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home/>} />
               <Route path="/about/team" element={<AboutTeam />} />
               <Route path="/about/culture" element={<AboutCulture />} />
               <Route path="/about/leadership" element={<AboutLeadership />} />
@@ -54,6 +54,7 @@ function App() {
               <Route path="/insights/Blog" element={<InsightsBlogs />} />
               <Route path="/insights/Events" element={<InsightsEvents />} />
               <Route path="/insights/Webinars" element={<InsightsWebinars />} />
+              <Route path='/insights/blogadmin' element={<BlogAdmin/>}/>
               <Route path="/services/career-counseling" element={<ServicesCareer />} />
               <Route path="/services/sessionbooking" element={<Sessionbooking />} />
               <Route path="/services/counselor-login" element={<Counselorlogin />} />
@@ -63,7 +64,7 @@ function App() {
               <Route path='/industries/banking' element={<Editech/>}/>
               <Route path='/industries/edtech' element={<Editech/>}/>
               <Route path="/contactus" element={<Contactus />} />
-              <Route path='/blogadmin' element={<Blogadmin/>}></Route>
+              
             </Routes>
           </AnimatePresence>
 
@@ -71,6 +72,8 @@ function App() {
           <AllpagePopup />
         </main>
         <Footer />
+        {/* <Contactus/>
+        <BlogAdmin/> */}
       </div>
     </Router>
   );
