@@ -23,6 +23,7 @@ import AllpagePopup from './pages/popup';
 import Sessionbooking from './pages/services/session-booking';
 import Counselorlogin from './pages/services/counselor-login';
 import CounselorDashboard from './pages/services/counselor-dashboard';
+import SessionBooking from './pages/services/session-booking';
 import PaidSession from './pages/services/paid-session';
 import Contactus from './pages/contactus/Contactus';
 import BlogAdmin from './pages/insights/Blogadmin';
@@ -59,6 +60,7 @@ function App() {
               <Route path="/services/sessionbooking" element={<Sessionbooking />} />
               <Route path="/services/counselor-login" element={<Counselorlogin />} />
               <Route path="/services/counselor-dashboard" element={<CounselorDashboard />} />
+              
               <Route path="/services/paid-session" element={<PaidSession />} />
               <Route path='/industries/edtech' element={<Editech/>}/>
               <Route path='/industries/banking' element={<Editech/>}/>
@@ -74,6 +76,7 @@ function App() {
         <Footer />
         {/* <Contactus/>
         <BlogAdmin/> */}
+        <SessionBooking/>
       </div>
     </Router>
   );
