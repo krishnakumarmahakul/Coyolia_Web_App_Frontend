@@ -76,7 +76,7 @@ function App() {
         <Footer />
         {/* <Contactus/>
         <BlogAdmin/> */}
-        <SessionBooking/>
+        {/* <SessionBooking/> */}
       </div>
     </Router>
   );

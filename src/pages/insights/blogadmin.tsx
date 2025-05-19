@@ -1,172 +1,286 @@
-
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-interface AdminData {
+interface Blog {
   _id: string;
-  email: string;
-  role: string;
+  title: string;
+  content: string;
+  author: string;
+  tags: string[];
+  isPublished: boolean;
   createdAt: string;
   updatedAt: string;
 }
 
 const BlogAdmin: React.FC = () => {
-  const [adminData, setAdminData] = useState<AdminData | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string>('');
-  const navigate = useNavigate();
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
+  const [formData, setFormData] = useState({
+    title: '',
+    content: '',
+    tags: '',
+    isPublished: false,
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
 
-  // Configure axios to send credentials (cookies) with every request
+  // Axios default to send cookies
   axios.defaults.withCredentials = true;
 
+  // Fetch all blogs on mount
   useEffect(() => {
-    alert("it reach the blog admin")
-    const verifyAdmin = async () => {
-      try {
-        console.log("Checking admin status"); // Debug A
-        const res = await axios.get('http://localhost:5000/api/v1/admin/status');
-        console.log("Admin status response:", res.data); // Debug B
-        
-        if (res.data.success) {
-          console.log("Admin verification successful"); // Debug C
-          setAdminData({
-            _id: res.data.user?.id || '',
-            email: res.data.user?.email || 'admin@example.com',
-            role: 'admin',
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
-          });
-        } else {
-          console.log("Admin verification failed - not authorized"); // Debug D
-          navigate('/insights/Blog');
-        }
-      } catch (err) {
-        console.error("Auth check failed:", err); // Debug E
-        setError('Failed to verify admin privileges');
-        navigate('/insights/Blog');
-      } finally {
-        console.log("Admin verification process completed"); // Debug F
-        setLoading(false);
-      }
-    };
+    fetchBlogs();
+  }, []);
 
-    verifyAdmin();
-  }, [navigate]);
-
-  const handleLogout = async () => {
+  const fetchBlogs = async () => {
+    setLoading(true);
     try {
-      await axios.post('http://localhost:5000/api/v1/admin/logout');
-      navigate('/insights/Blog');
+      console.log('Fetching blogs...');
+      const res = await axios.get('http://localhost:5000/api/v1/blogs');
+      if (res.data.success) {
+        setBlogs(res.data.data);
+        console.log('Blogs fetched:', res.data.data);
+      }
     } catch (err) {
-      console.error('Logout error:', err);
-      setError('Failed to logout. Please try again.');
+      console.error('Error fetching blogs:', err);
+      setError('Failed to fetch blogs.');
+    } finally {
+      setLoading(false);
     }
   };
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50">
-        <div className="p-8 bg-white rounded-lg shadow-md">
-          <div className="flex flex-col items-center space-y-4">
-            <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-            <p className="text-gray-600">Verifying admin access...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // Handle input changes for form fields
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
 
-  if (error) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50">
-        <div className="p-8 bg-white rounded-lg shadow-md">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-red-500 mb-4">Error</h2>
-            <p className="text-gray-600 mb-6">{error}</p>
-            <button
-              onClick={() => navigate('/insights/Blog')}
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
-            >
-              Return to Blog
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // When selecting a blog from the list to edit
+  const handleSelectBlog = (blog: Blog) => {
+    setSelectedBlog(blog);
+    setFormData({
+      title: blog.title,
+      content: blog.content,
+      tags: blog.tags.join(', '),
+      isPublished: blog.isPublished,
+    });
+    setError('');
+    setSuccessMsg('');
+  };
+
+  // Clear form for creating new blog
+  const clearForm = () => {
+    setSelectedBlog(null);
+    setFormData({ title: '', content: '', tags: '', isPublished: false });
+    setError('');
+    setSuccessMsg('');
+  };
+
+  // Create or update blog
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setSuccessMsg('');
+
+    // Prepare tags array by splitting by comma and trimming spaces
+    const tagsArray = formData.tags.split(',').map((tag) => tag.trim());
+
+    try {
+      if (selectedBlog) {
+        // Update blog
+        console.log('Updating blog:', selectedBlog._id);
+        const res = await axios.put(
+          `http://localhost:5000/api/v1/blogs/${selectedBlog._id}`,
+          {
+            title: formData.title,
+            content: formData.content,
+            tags: tagsArray,
+            isPublished: formData.isPublished,
+          }
+        );
+        if (res.data.success) {
+          setSuccessMsg('Blog updated successfully!');
+          // Refresh blogs list and select updated blog
+          fetchBlogs();
+          setSelectedBlog(res.data.data);
+        }
+      } else {
+        // Create blog
+        console.log('Creating blog...');
+        const res = await axios.post('http://localhost:5000/api/v1/blogs', {
+          title: formData.title,
+          content: formData.content,
+          tags: tagsArray,
+          isPublished: formData.isPublished,
+        });
+        if (res.data.success) {
+          setSuccessMsg('Blog created successfully!');
+          fetchBlogs();
+          clearForm();
+        }
+      }
+    } catch (err) {
+      console.error('Error saving blog:', err);
+      setError('Failed to save blog.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Delete a blog
+  const handleDelete = async (id: string) => {
+    if (!window.confirm('Are you sure you want to delete this blog?')) return;
+
+    setLoading(true);
+    setError('');
+    setSuccessMsg('');
+
+    try {
+      console.log('Deleting blog:', id);
+      const res = await axios.delete(`http://localhost:5000/api/v1/blogs/${id}`);
+      if (res.data.success) {
+        setSuccessMsg('Blog deleted successfully!');
+        fetchBlogs();
+        // Clear form if deleted blog was selected
+        if (selectedBlog?._id === id) clearForm();
+      }
+    } catch (err) {
+      console.error('Error deleting blog:', err);
+      setError('Failed to delete blog.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-        {/* Header */}
-        <div className="bg-blue-600 p-6 text-white">
-          <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-          <div className="flex items-center mt-2">
-            <span className="bg-blue-500 text-xs px-2 py-1 rounded-full capitalize">
-              {adminData?.role}
-            </span>
-            <span className="ml-4 text-blue-100">
-              Logged in as: {adminData?.email}
-            </span>
-          </div>
-        </div>
+    <div className="min-h-screen flex bg-white text-[#21204c]">
+  {/* Blogs List */}
+  <aside className="w-1/3 border-r border-[#21204c] overflow-y-auto">
+    <h2 className="text-2xl font-bold p-4 border-b border-[#21204c]">Blogs</h2>
+    {loading && <p className="p-4">Loading blogs...</p>}
+    {error && <p className="p-4 text-red-500">{error}</p>}
+    {!loading && blogs.length === 0 && <p className="p-4">No blogs found.</p>}
+    <ul>
+      {blogs.map((blog) => (
+        <li
+          key={blog._id}
+          className={`p-4 border-b border-[#7655b7] cursor-pointer hover:bg-[#7655b7] hover:text-white transition-colors ${
+            selectedBlog?._id === blog._id ? 'bg-[#7655b7] text-white font-semibold' : ''
+          }`}
+          onClick={() => handleSelectBlog(blog)}
+        >
+          <h3 className="font-semibold">{blog.title}</h3>
+          <p className="text-sm text-[#4b4a71]">{new Date(blog.createdAt).toLocaleDateString()}</p>
+        </li>
+      ))}
+    </ul>
+  </aside>
 
-        {/* Main Content */}
-        <div className="p-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-              <h3 className="font-medium text-gray-500">Total Posts</h3>
-              <p className="text-3xl font-bold mt-2">24</p>
-            </div>
+  {/* Blog Form Panel */}
+  <section className="flex-1 p-8 max-w-3xl overflow-y-auto">
+    <h2 className="text-3xl font-extrabold mb-6 text-[#21204c]">
+      {selectedBlog ? 'Edit Blog' : 'Create New Blog'}
+    </h2>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-              <h3 className="font-medium text-gray-500">Active Users</h3>
-              <p className="text-3xl font-bold mt-2">156</p>
-            </div>
+    {error && <p className="mb-4 text-red-500">{error}</p>}
+    {successMsg && <p className="mb-4 text-green-600">{successMsg}</p>}
 
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-              <h3 className="font-medium text-gray-500">Pending Actions</h3>
-              <p className="text-3xl font-bold mt-2">3</p>
-            </div>
-          </div>
-
-          {/* Admin Actions */}
-          <div className="mt-8">
-            <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
-            <div className="flex flex-wrap gap-4">
-              <button className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">
-                Create New Post
-              </button>
-              <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
-                Manage Users
-              </button>
-              <button className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 transition">
-                View Analytics
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="bg-gray-100 px-6 py-4 border-t border-gray-200">
-          <div className="flex justify-between items-center">
-            <p className="text-sm text-gray-600">
-              Last login:{' '}
-              {adminData?.updatedAt
-                ? new Date(adminData.updatedAt).toLocaleString()
-                : 'N/A'}
-            </p>
-            <button
-              onClick={handleLogout}
-              className="text-sm text-red-500 hover:text-red-700"
-            >
-              Logout
-            </button>
-          </div>
-        </div>
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div>
+        <label className="block mb-2 font-semibold text-[#21204c]" htmlFor="title">
+          Title
+        </label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value={formData.title}
+          onChange={handleChange}
+          className="w-full p-3 rounded border border-[#7655b7] text-[#21204c] focus:outline-none focus:ring-2 focus:ring-[#7655b7]"
+          required
+          maxLength={100}
+        />
       </div>
-    </div>
+
+      <div>
+        <label className="block mb-2 font-semibold text-[#21204c]" htmlFor="content">
+          Content
+        </label>
+        <textarea
+          id="content"
+          name="content"
+          value={formData.content}
+          onChange={handleChange}
+          className="w-full p-3 rounded border border-[#7655b7] text-[#21204c] h-40 resize-none focus:outline-none focus:ring-2 focus:ring-[#7655b7]"
+          required
+        />
+      </div>
+
+      <div>
+        <label className="block mb-2 font-semibold text-[#21204c]" htmlFor="tags">
+          Tags (comma separated)
+        </label>
+        <input
+          type="text"
+          id="tags"
+          name="tags"
+          value={formData.tags}
+          onChange={handleChange}
+          className="w-full p-3 rounded border border-[#7655b7] text-[#21204c] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7655b7]"
+          placeholder="e.g. nodejs, javascript, backend"
+        />
+      </div>
+
+      <div className="flex items-center space-x-3">
+        <input
+          type="checkbox"
+          id="isPublished"
+          name="isPublished"
+          checked={formData.isPublished}
+          onChange={handleChange}
+          className="w-5 h-5 text-[#7655b7] focus:ring-[#7655b7]"
+        />
+        <label htmlFor="isPublished" className="font-semibold text-[#21204c] select-none">
+          Published
+        </label>
+      </div>
+
+      <div className="flex space-x-4">
+        <button
+          type="submit"
+          disabled={loading}
+          className="bg-[#21204c] text-white font-bold px-6 py-3 rounded hover:bg-[#7655b7] transition-colors disabled:opacity-50"
+        >
+          {selectedBlog ? 'Update Blog' : 'Create Blog'}
+        </button>
+        {selectedBlog && (
+          <button
+            type="button"
+            onClick={() => handleDelete(selectedBlog._id)}
+            disabled={loading}
+            className="bg-[#7655b7] text-white px-6 py-3 rounded hover:bg-[#5b3f9f] transition-colors disabled:opacity-50"
+          >
+            Delete Blog
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={clearForm}
+          disabled={loading}
+          className="bg-gray-300 text-[#21204c] px-6 py-3 rounded hover:bg-gray-400 transition-colors disabled:opacity-50"
+        >
+          Clear
+        </button>
+      </div>
+    </form>
+  </section>
+</div>
+
   );
 };
 
