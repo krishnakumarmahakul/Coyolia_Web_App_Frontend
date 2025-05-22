@@ -12,7 +12,7 @@ export const ContactUs: React.FC = () => {
     emailjs
       .sendForm(
         'service_dez3jdt',
-        'template_8h9xscs',
+        'template_1oe2l9b',
         form.current,
         {
           publicKey: 'u77ACP1YPy4znyDqR',

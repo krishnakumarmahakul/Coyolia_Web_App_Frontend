@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Services: React.FC = () => {
   return (
-    <div className="w-full h-[60vh] px-4 py-8 sm:px-6 lg:px-8">
+    <div className="w-full h-[90vh] px-4 py-8 sm:px-6 lg:px-8">
       <h2 className="text-3xl text-center text-[#2c3e50] mb-12 font-semibold">
         Our Services
       </h2>
@@ -12,7 +13,9 @@ const Services: React.FC = () => {
             Skill Development and Courses
           </h3>
           <p className="text-[wheat] leading-relaxed">
-            Coyolia Technologies has custom made programs for both, rural and urban youth. We also have intense programs for mid career professionals who wish to upskill.
+            Coyolia Technologies has custom made programs for both, rural and
+            urban youth. We also have intense programs for mid career
+            professionals who wish to upskill.
           </p>
         </div>
         <div className="bg-[#21204c] text-white rounded-lg p-6 shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
@@ -20,7 +23,8 @@ const Services: React.FC = () => {
             Staff Augmentation
           </h3>
           <p className="text-[wheat] leading-relaxed">
-            Specific, domain-based head hunting and different financial models for staff augmentation.
+            Specific, domain-based head hunting and different financial models
+            for staff augmentation.
           </p>
         </div>
         <div className="bg-[#21204c] text-white rounded-lg p-6 shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
@@ -28,11 +32,14 @@ const Services: React.FC = () => {
             Career Counseling
           </h3>
           <p className="text-[wheat] leading-relaxed">
-            Niche, affordable and short term assignments on making your IT Department future ready.
+            Niche, affordable and short term assignments on making your IT
+            Department future ready.
           </p>
-          <button className="mt-6 inline-block bg-gradient-to-r from-[goldenrod] to-[#ffd700] text-[#21204c] font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:from-[#ffd700] hover:to-[goldenrod] w-full sm:w-auto">
-            Book a Session
-          </button>
+          <Link to="/services/career-counseling">
+            <button className="mt-6 inline-block bg-gradient-to-r from-[goldenrod] to-[#ffd700] text-[#21204c] font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:from-[#ffd700] hover:to-[goldenrod] w-full sm:w-auto">
+              Book a Session
+            </button>
+          </Link>
         </div>
       </div>
     </div>

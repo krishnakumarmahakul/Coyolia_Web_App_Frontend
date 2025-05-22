@@ -1,14 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-interface Blog {
-  _id: string;
-  title: string;
-  content: string;
-  author: string;
-  image?: { url: string };
-}
+import BlogList from "./BlogList";
 
 interface User {
   id: string;
@@ -23,12 +16,8 @@ interface LoginResponse {
 
 // Base URL for authentication-related API calls
 const API_BASE_URL = "http://localhost:5000/api/v1/auth";
-// Base URL for blog-related API calls
-const BLOG_API_URL = "http://localhost:5000/api/v1/blogs";
 
 const Blog: React.FC = () => {
-  const [blogs, setBlogs] = useState<Blog[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -38,38 +27,6 @@ const Blog: React.FC = () => {
 
   axios.defaults.withCredentials = true; // send cookies with requests
   axios.defaults.baseURL = API_BASE_URL;
-
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        console.log("Fetching blogs from API...");
-        const res = await axios.get(BLOG_API_URL);
-        console.log("Blogs API response:", res); // Add this line
-        const fetchedBlogs = res.data.data || [];
-        
-        setBlogs(fetchedBlogs);
-      } catch (err: any) {
-        console.error("Blog fetch failed:", err);
-        let errorMsg = "Failed to load blogs. Please try again later.";
-        
-        if (err.response) {
-          console.error("Response data:", err.response.data);
-          console.error("Response status:", err.response.status);
-          errorMsg = err.response.data.message || errorMsg;
-        } else if (err.request) {
-          console.error("No response received:", err.request);
-          errorMsg = "No response from server. Check your connection.";
-        }
-        
-        setError(errorMsg);
-        setBlogs([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-  
-    fetchBlogs();
-  }, []);
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -135,7 +92,7 @@ const Blog: React.FC = () => {
     <div className="min-h-screen bg-white text-[#21204c] px-4 py-6 md:px-6 md:py-8">
       {/* Header and login/logout */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-        <h1 className="text-2xl font-bold">Coyolia Blogs</h1>
+        <h1 className="text-2xl font-bold"> Coyolia Blog's</h1>
         {isLoggedIn ? (
           <button
             onClick={handleLogout}
@@ -157,41 +114,6 @@ const Blog: React.FC = () => {
       {error && !showLoginModal && (
         <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">
           <p>{error}</p>
-        </div>
-      )}
-
-      {/* Loading spinner */}
-      {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#21204c]"></div>
-        </div>
-      ) : blogs.length === 0 ? (
-        <div className="text-center py-12">
-          <p className="text-gray-500">No blogs available.</p>
-        </div>
-      ) : (
-        // Blog cards grid
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {blogs.map((blog) => (
-            <div
-              key={blog._id}
-              className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
-            >
-              {blog.image?.url && (
-                <img
-                  src={blog.image.url}
-                  alt={blog.title}
-                  className="w-full h-48 object-cover"
-                  loading="lazy"
-                />
-              )}
-              <div className="p-4">
-                <h2 className="text-xl font-semibold mb-2 line-clamp-2">{blog.title}</h2>
-                <p className="text-gray-600 text-sm line-clamp-3">{blog.content}</p>
-                <p className="text-xs text-gray-500 mt-3">By {blog.author}</p>
-              </div>
-            </div>
-          ))}
         </div>
       )}
 
@@ -263,6 +185,7 @@ const Blog: React.FC = () => {
           </div>
         </div>
       )}
+      <BlogList/>
     </div>
   );
 };

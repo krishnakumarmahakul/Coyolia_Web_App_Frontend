@@ -1,36 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+
 const SolutionsInnovation = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="py-16 min-h-screen px-4"
-    >
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-[#21204C] mb-8">Innovation & Research</h1>
-        <p className="text-xl text-gray-600 mb-8">
-          Stay at the forefront of AI innovation with COYOLIA's research-driven solutions. We continuously explore new technologies and methodologies to deliver cutting-edge career development tools.
-        </p>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-[#21204C] mb-4">Research Lab</h2>
-            <p className="text-gray-600">
-              Our dedicated research team explores emerging AI technologies and their applications in career development.
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-[#21204C] mb-4">Industry Partnerships</h2>
-            <p className="text-gray-600">
-              Collaborations with industry leaders to develop innovative solutions for tomorrow's workforce challenges.
-            </p>
-          </div>
-        </div>
-      </div>
-    </motion.div>
+    <section className="space-y-4 h-[90vh]  items-center justify-center p-[100px] shadow-lg box-border rounded-[14px]">
+      <h2 className="text-3xl md:text-4xl font-bold text-[#7955b7]">
+        AI Solutions
+      </h2>
+      <p className="text-lg leading-relaxed">
+        Our AI and Data Analytics Consulting Services empower organizations to make smarter, faster decisions by integrating cutting-edge technologies like intelligent chatbots, real-time data processing, and workflow automation.
+      </p>
+      <p className="text-lg leading-relaxed">
+        At Coyolia, we treat AI and data analytics not just as tools, but as strategic assets. For Sales teams, we provide data-driven lead scoring and intelligent assistant tools that boost productivity and improve conversions.
+      </p>
+      <p className="text-lg leading-relaxed">
+        Customer Service benefits from predictive support systems and AI chatbots that resolve queries quickly, improving satisfaction and reducing operational costs.
+      </p>
+    </section>
   );
 };
-
 export default SolutionsInnovation;

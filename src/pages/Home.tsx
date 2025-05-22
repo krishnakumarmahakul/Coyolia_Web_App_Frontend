@@ -111,12 +111,15 @@ const Home = () => {
               transition={{ delay: 0.2 }}
             >
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Your AI-Powered Career Companion
+                COYOLIA
+                <br />
+                <span className="text-2xl md:text-3xl font-medium ">
+                  Cohort of young leaders in action
+                </span>
               </h1>
+
               <p className="text-xl mb-8">
-                Empowering careers with innovation & AI. Transform your
-                professional journey with data-driven insights and personalized
-                guidance.
+                Powering Workforce Agility Through AI, Analytics, and Skilling
               </p>
               <div className="space-x-4">
                 <Link
@@ -224,7 +227,7 @@ const Home = () => {
           ))}
         </div>
       </section>
-      <Services/>
+      <Services />
 
       {/* Our Founders Section */}
       <section
@@ -297,10 +300,9 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <Testimonies/>
-      <Contactmail/>
+      <Testimonies />
+      <Contactmail />
     </motion.div>
-    
   );
 };
 

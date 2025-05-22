@@ -3,33 +3,20 @@ import { motion } from 'framer-motion';
 
 const SolutionsTalent = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="py-16 min-h-screen px-4"
-    >
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-[#21204C] mb-8">AI in Talent Acquisition & HR</h1>
-        <p className="text-xl text-gray-600 mb-8">
-          Revolutionize your talent acquisition and HR processes with COYOLIA's AI-powered solutions. Our platform helps you identify, attract, and retain top talent while streamlining HR operations.
-        </p>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-[#21204C] mb-4">Smart Recruitment</h2>
-            <p className="text-gray-600">
-              AI-driven candidate matching and assessment tools help you find the perfect fit for your organization.
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-[#21204C] mb-4">HR Analytics</h2>
-            <p className="text-gray-600">
-              Powerful analytics and insights to optimize workforce planning and employee development strategies.
-            </p>
-          </div>
-        </div>
-      </div>
-    </motion.div>
+    <section className="space-y-4 h-[90vh]  items-center justify-center p-[100px] shadow-lg box-border rounded-[14px]">
+      <h2 className="text-3xl md:text-4xl font-bold text-[#7955b7]">
+        Professional Services
+      </h2>
+      <p className="text-lg leading-relaxed">
+        Coyolia’s professional services are uniquely powered by ZeroNP (Zero Notice Period), a pioneering concept that redefines the speed and efficiency of hiring.
+      </p>
+      <p className="text-lg leading-relaxed">
+        In today’s fast-paced business environment, companies often face critical delays due to extended notice periods of potential hires. ZeroNP solves this by maintaining a ready pool of pre-vetted professionals who are available to join immediately, without compromising on the quality of experience or background verification.
+      </p>
+      <p className="text-lg leading-relaxed">
+        What makes ZeroNP stand out is its focus on legitimacy, agility, and domain relevance. Every candidate undergoes rigorous screening for skills, experience, and cultural fit, ensuring they are not just quick hires — but the right hires.
+      </p>
+    </section>
   );
 };
 

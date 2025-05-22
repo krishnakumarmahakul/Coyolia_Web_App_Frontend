@@ -11,27 +11,30 @@ export const menuItems: MenuItem[] = [
     submenu: [
       { title: 'Our Team', path: '/about/team' },
       { title: 'Our Culture', path: '/about/culture' },
+      { title: 'Patners', path: '/about/tech-partners' },
       { title: 'Leadership Principles', path: '/about/leadership' },
+      
     ],
   },
   {
     title: 'Solutions',
     path: '/solutions',
     submenu: [
-      { title: 'AI in Learning & Development', path: '/solutions/learning' },
-      { title: 'AI in Talent Acquisition & HR', path: '/solutions/talent' },
-      { title: 'Innovation & Research', path: '/solutions/innovation' },
+      { title: 'Curriculum Development Services', path: '/solutions/learning' },
+      { title: 'Professional Services', path: '/solutions/talent' },
+      { title: 'AI Solutions', path: '/solutions/innovation' },
+      { title: 'HR and Recruitment Analytics', path: '/solutions/hr' },
     ],
   },
-  {
-    title: 'Clients',
-    path: '/clients',
-    submenu: [
-      { title: 'Technology Partners', path: '/clients/tech-partners' },
-      { title: 'Academic Partners', path: '/clients/academic-partners' },
-      { title: 'Resellers', path: '/clients/resellers' },
-    ],
-  },
+  // {
+  //   title: 'Clients',
+  //   path: '/clients',
+  //   submenu: [
+  //     { title: 'Technology Partners', path: '/clients/tech-partners' },
+  //     { title: 'Academic Partners', path: '/clients/academic-partners' },
+  //     { title: 'Resellers', path: '/clients/resellers' },
+  //   ],
+  // },
   {
     title: 'Insights',
     path: '/insights',
@@ -46,15 +49,15 @@ export const menuItems: MenuItem[] = [
     path: '/contactus'
     
   },
-  {
-    title: 'Industries',
-    path: '/industries',
-    submenu: [
-      { title: 'EdTech', path: '/industries/edtech' },
-      { title: 'Retail', path: '/industries/retail' },
-      { title: 'Banking Services', path: '/industries/banking' },
-    ],
-  },
+  // {
+  //   title: 'Industries',
+  //   path: '/industries',
+  //   submenu: [
+  //     { title: 'EdTech', path: '/industries/edtech' },
+  //     { title: 'Retail', path: '/industries/retail' },
+  //     { title: 'Banking Services', path: '/industries/banking' },
+  //   ],
+  // },
   {
     title: 'Services',
     path: '/services',
