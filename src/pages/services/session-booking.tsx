@@ -53,9 +53,9 @@ const SessionBooking: React.FC = () => {
   const handlePaidSessionConfirm = () => {
     setPaidConfirmed(true);
     setShowPaidOffer(false);
-    alert(
-      "🎉 You’ve upgraded to a 60-minute paid session. Details will be emailed to you after payment!"
-    );
+    // alert(
+    //   "🎉 You’ve upgraded to a 60-minute paid session. Details will be emailed to you after payment!"
+    // );
     navigate("/services/paid-session");
   };
 

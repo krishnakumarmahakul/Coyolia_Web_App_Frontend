@@ -74,7 +74,7 @@ const Home = () => {
     },
   ];
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
   const ReadMore = ({ text, limit = 200 }: any) => {
     const [expanded, setExpanded] = useState(false);
     return (
@@ -152,7 +152,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
@@ -192,7 +192,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Vision, Mission, Values Section */}
+
       <section className="py-20 px-6 md:px-16 bg-gradient-to-br from-[#f5f7fa] to-[#e4e7eb] text-[#21204C]">
         <div className="max-w-6xl mx-auto grid gap-16 text-center">
           {[
@@ -229,7 +229,7 @@ const Home = () => {
       </section>
       <Services />
 
-      {/* Our Founders Section */}
+
       <section
         className="py-20 bg-cover bg-center bg-no-repeat"
         style={{
@@ -237,35 +237,35 @@ const Home = () => {
         }}
       >
         <div className="max-w-6xl mx-auto px-6">
-          {/* Hanging Board Container */}
+          
           <div className="flex justify-center relative mb-12 group">
-            {/* Ropes */}
+            
             <div className="absolute top-0 left-[33%] w-1 h-12 bg-[#21204C] z-10"></div>
             <div className="absolute top-0 right-[33%] w-1 h-12 bg-[#21204C] z-10"></div>
 
-            {/* Motion Board */}
+            
             <motion.div
               transition={{ type: "spring", stiffness: 160, damping: 12 }}
               className="w-full bg-white border-4 border-[#7655b7] rounded-3xl shadow-2xl px-8 py-10 relative z-20"
             >
-              {/* Decorative Pins */}
+              
               <div className="absolute -top-4 left-10 w-4 h-4 bg-[#7655b7] rounded-full border-2 border-white shadow-md"></div>
               <div className="absolute -top-4 right-10 w-4 h-4 bg-[#21204C] rounded-full border-2 border-white shadow-md"></div>
 
-              {/* Title */}
+              
               <h2 className="text-5xl font-extrabold text-center mb-12">
                 <span className="bg-gradient-to-r from-[#7655b7] to-[#21204C] text-transparent bg-clip-text">
                   Our Founders
                 </span>
               </h2>
 
-              {/* Founders Slider */}
+              
               <Swiper
                 spaceBetween={30}
                 slidesPerView={1}
                 breakpoints={{
                   768: { slidesPerView: 2 },
-                  1024: { slidesPerView: 3 }, // Show 3 slides on large screens
+                  1024: { slidesPerView: 3 }, 
                 }}
               >
                 {founders.map((founder, idx) => (

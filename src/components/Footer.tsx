@@ -1,13 +1,46 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin
+} from 'lucide-react';
 
 const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    {
+      href: 'https://www.facebook.com/coyoliatech',
+      Icon: Facebook,
+      label: 'Facebook'
+    },
+    {
+      href: 'https://www.instagram.com/coyoliatech',
+      Icon: Instagram,
+      label: 'Instagram'
+    },
+    {
+      href: 'https://twitter.com/coyoliatech',
+      Icon: Twitter,
+      label: 'Twitter'
+    },
+    {
+      href: 'https://www.linkedin.com/company/coyoliatech',
+      Icon: Linkedin,
+      label: 'LinkedIn'
+    }
+  ];
+
   return (
     <footer className="bg-[#21204C] text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* About */}
+          
           <div>
             <h3 className="text-xl font-bold mb-4">About Coyolia</h3>
             <p className="text-sm leading-relaxed text-gray-300">
@@ -15,18 +48,34 @@ const Footer: React.FC = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
+          
           <div>
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/about" className="hover:text-[#c3b3fa] transition-colors">About Us</Link></li>
-              <li><Link to="/services" className="hover:text-[#c3b3fa] transition-colors">Services</Link></li>
-              <li><Link to="/careers" className="hover:text-[#c3b3fa] transition-colors">Careers</Link></li>
-              <li><Link to="/contact" className="hover:text-[#c3b3fa] transition-colors">Contact</Link></li>
+              <li>
+                <Link to="/about" className="hover:text-[#c3b3fa] transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="hover:text-[#c3b3fa] transition-colors">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/careers" className="hover:text-[#c3b3fa] transition-colors">
+                  Careers
+                </Link>
+              </li>
+              <li>
+                <Link to="/contactus" className="hover:text-[#c3b3fa] transition-colors">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Newsletter */}
+          
           <div>
             <h3 className="text-xl font-bold mb-4">Newsletter</h3>
             <p className="text-sm text-gray-300 mb-4">
@@ -47,44 +96,47 @@ const Footer: React.FC = () => {
             </form>
           </div>
 
-          {/* Contact Info */}
+          
           <div>
             <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-            <div className="space-y-4 text-sm">
-              <p className="flex items-center text-gray-300">
+            <div className="space-y-4 text-sm text-gray-300">
+              <p className="flex items-center">
                 <Phone className="w-5 h-5 mr-2 text-[#c3b3fa]" />
                 +91 9885001831
               </p>
-              <p className="flex items-center text-gray-300">
+              <p className="flex items-center">
                 <Mail className="w-5 h-5 mr-2 text-[#c3b3fa]" />
                 info@coyolia.com
               </p>
-              <p className="flex items-center text-gray-300">
+              <p className="flex items-center">
                 <MapPin className="w-5 h-5 mr-2 text-[#c3b3fa]" />
-                #405, Aakruti Nivas Apartments, Czech Colony Hyderabad,500018
+                #405, Aakruti Nivas Apartments, Czech Colony Hyderabad, 500018
               </p>
             </div>
           </div>
         </div>
 
-        {/* Social Media */}
+        
         <div className="mt-12 flex justify-center space-x-6">
-          {[Facebook, Instagram, Twitter, Linkedin].map((Icon, idx) => (
+          {socialLinks.map(({ href, Icon, label }) => (
             <a
-              key={idx}
-              href="https://www.instagram.com/coyoliatech/?utm_source=qr&igsh=MWw1d2hsbGdkdzRreQ%3D%3D"
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
               className="text-white hover:text-[#c3b3fa] transition-transform transform hover:scale-110 duration-300"
-              aria-label="Social Media Link"
             >
               <Icon className="w-6 h-6" />
             </a>
           ))}
         </div>
 
-        {/* Bottom Text */}
+        
         <div className="mt-8 pt-6 border-t border-white/20">
           <p className="text-center text-sm text-gray-400">
-            © {new Date().getFullYear()} <span className="font-semibold text-white">COYOLIA</span>. All rights reserved.
+            © {currentYear}{' '}
+            <span className="font-semibold text-white">COYOLIA</span>. All rights reserved.
           </p>
         </div>
       </div>

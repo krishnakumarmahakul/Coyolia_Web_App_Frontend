@@ -305,7 +305,6 @@ const CounselorLogin = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log('Showing login form');
       setShowForm(true);
     }, 100);
     return () => clearTimeout(timer);
@@ -315,7 +314,7 @@ const CounselorLogin = () => {
     e.preventDefault();
     setError('');
     setLoading(true);
-    console.log('Login initiated:', { email, password });
+    // console.log('Login initiated:', { email, password });
 
     if (!email || !password) {
       setError('Please enter both email and password');
@@ -325,22 +324,22 @@ const CounselorLogin = () => {
     }
 
     try {
-      console.log('Sending POST /counselor/login');
+      // console.log('Sending POST /counselor/login');
       const res = await axios.post<LoginResponse>('/counselor/login', {
         email,
         password,
       });
 
-      console.log('Login response:', res.data);
+      // console.log('Login response:', res.data);
 
       if (res.data.success) {
-        console.log('Login successful, checking session status');
+        // console.log('Login successful, checking session status');
 
         const statusRes = await axios.get<LoginResponse>('/counselor/status');
-        console.log('Session status response:', statusRes.data);
+        // console.log('Session status response:', statusRes.data);
 
         if (statusRes.data.isAuthenticated && statusRes.data.user?.role === 'counselor') {
-          console.log('User authenticated as counselor, navigating to dashboard');
+          // console.log('User authenticated as counselor, navigating to dashboard');
           navigate('/services/counselor-dashboard');
         } else {
           console.warn('Access denied: Not a counselor');
@@ -352,7 +351,7 @@ const CounselorLogin = () => {
         setError(res.data.message || 'Login failed. Please try again.');
       }
     } catch (err: any) {
-      console.error('Login error:', err);
+      // console.error('Login error:', err);
 
       let errorMsg = 'Login failed. Please try again.';
 
@@ -367,7 +366,7 @@ const CounselorLogin = () => {
       setError(errorMsg);
     } finally {
       setLoading(false);
-      console.log('Login process completed');
+      // console.log('Login process completed');
     }
   };
 

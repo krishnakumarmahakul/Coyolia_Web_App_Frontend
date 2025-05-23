@@ -23,18 +23,19 @@ import AllpagePopup from './pages/popup';
 import Sessionbooking from './pages/services/session-booking';
 import Counselorlogin from './pages/services/counselor-login';
 import CounselorDashboard from './pages/services/counselor-dashboard';
-import SessionBooking from './pages/services/session-booking';
 import PaidSession from './pages/services/paid-session';
 import Contactus from './pages/contactus/Contactus';
 import BlogAdmin from './pages/insights/Blogadmin';
 import { AnimatePresence } from 'framer-motion';
 import Editech from './pages/industries/edtech';
-import Blogadmin from './pages/insights/Blogadmin';
 import BlogList from './pages/insights/BlogList';
 import Solution from './pages/solutions/Solution';
 import AboutUsSection from './pages/about/aboutus';
 import Services from './pages/services/services';
 import HR from './pages/solutions/Hr';
+
+
+const NotFound = () => <div className="text-center text-red-500 p-4">404 - Page Not Found</div>;
 
 function App() {
   return (
@@ -44,59 +45,61 @@ function App() {
         <main className="flex-grow">
           <AnimatePresence mode="wait">
             <Routes>
-              <Route path="/" element={<Home/>} />
-              
+              {/* Home & About */}
+              <Route path="/" element={<Home />} />
               <Route path="/about" element={<AboutUsSection />} />
               <Route path="/about/team" element={<AboutTeam />} />
               <Route path="/about/culture" element={<AboutCulture />} />
               <Route path="/about/tech-partners" element={<ClientsTechPartners />} />
               <Route path="/about/leadership" element={<AboutLeadership />} />
-              {/*  */}
-              <Route path="/solutions" element={<Solution/>}/>
+
+              {/* Solutions */}
+              <Route path="/solutions" element={<Solution />} />
               <Route path="/solutions/learning" element={<SolutionsLearning />} />
               <Route path="/solutions/talent" element={<SolutionsTalent />} />
               <Route path="/solutions/innovation" element={<SolutionsInnovation />} />
-              <Route path="/solutions/hr" element={<HR/>} />
-              
+              <Route path="/solutions/hr" element={<HR />} />
 
-
-              {/*  */}
-
-              
+              {/* Clients */}
               <Route path="/clients/academic-partners" element={<ClientsAcademicPartners />} />
               <Route path="/clients/resellers" element={<ClientsResellers />} />
+
+              {/* Careers */}
               <Route path="/careers/life" element={<CareersLife />} />
               <Route path="/careers/openings" element={<CareersOpenings />} />
               <Route path="/careers/benefits" element={<CareersBenefits />} />
+
+              {/* Insights */}
               <Route path="/insights/Blog" element={<InsightsBlogs />} />
               <Route path="/insights/Events" element={<InsightsEvents />} />
               <Route path="/insights/Webinars" element={<InsightsWebinars />} />
-              <Route path='/insights/blogadmin' element={<BlogAdmin/>}/>
+              <Route path="/insights/blogadmin" element={<BlogAdmin />} />
+              <Route path="/insights/bloglist" element={<BlogList />} />
 
-              <Route path='/services' element={<Services/>}/>
+              {/* Services */}
+              <Route path="/services" element={<Services />} />
               <Route path="/services/career-counseling" element={<ServicesCareer />} />
               <Route path="/services/sessionbooking" element={<Sessionbooking />} />
               <Route path="/services/counselor-login" element={<Counselorlogin />} />
               <Route path="/services/counselor-dashboard" element={<CounselorDashboard />} />
-
               <Route path="/services/paid-session" element={<PaidSession />} />
-              <Route path='/industries/edtech' element={<Editech/>}/>
-              <Route path='/industries/banking' element={<Editech/>}/>
-              <Route path='/industries/edtech' element={<Editech/>}/>
+
+              {/* Industries */}
+              <Route path="/industries/edtech" element={<Editech />} />
+              <Route path="/industries/banking" element={<Editech />} />
+
+              {/* Contact */}
               <Route path="/contactus" element={<Contactus />} />
-              
+
+              {/* 404 */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </AnimatePresence>
 
-          {/* 👇 This ensures popup is available on all pages */}
+          {/* Global Popup */}
           <AllpagePopup />
         </main>
         <Footer />
-        
-        
-        
-        
-        
       </div>
     </Router>
   );

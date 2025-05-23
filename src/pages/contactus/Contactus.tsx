@@ -9,33 +9,30 @@ export const ContactUs: React.FC = () => {
 
     if (!form.current) return;
 
-    emailjs
-      .sendForm(
-        'service_dez3jdt',
-        'template_1oe2l9b',
-        form.current,
-        {
-          publicKey: 'u77ACP1YPy4znyDqR',
-        }
-      )
-      .then(
-        () => {
-          console.log('SUCCESS!');
-          alert('Message sent successfully!');
-          form.current?.reset();
-        },
-        (error: { text: any }) => {
-          console.log('FAILED...', error.text);
-          alert('Failed to send message. Please try again.');
-        }
-      );
+    emailjs.sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      form.current,
+      {
+        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      }
+    )
+    .then(() => {
+      console.log('SUCCESS!');
+      // alert('Message sent successfully!');
+      form.current?.reset();
+    })
+    .catch((error) => {
+      // console.error('FAILED...', error.text);
+      // alert('Failed to send message. Please try again.');
+    });
   };
 
   return (
     <div className="relative py-16 bg-white text-[#21204c]">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap rounded-xl shadow-lg overflow-hidden border ">
-          {/* Left Section */}
+          
           <div className="w-full lg:w-5/12 bg-[#21204c] text-white p-8 lg:p-12">
             <h2 className="text-3xl font-bold mb-4 leading-tight">
               Start Your Skill Development Journey with Us!
@@ -58,7 +55,7 @@ export const ContactUs: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Form Section */}
+          
           <div className="w-full lg:w-7/12 bg-white p-8 lg:p-12">
             <form ref={form} onSubmit={sendEmail} className="space-y-6">
               <div>

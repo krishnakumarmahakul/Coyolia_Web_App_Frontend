@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-// Importing all logos
+
 import hhh_logo from '../../assets/hhh-logo.png';
 import intense from '../../assets/intenseTechnology.jpg';
 import egov from '../../assets/eGov-logo.png';
@@ -12,7 +12,7 @@ import kloudmate from '../../assets/kloudmate.svg';
 import Centurion from '../../assets/Centurion.png';
 import datamedow from '../../assets/datamedaos.png';
 
-// Updated partners array with logos
+
 const partners = [
   {
     title: 'Head Held High Foundation, Bangalore',

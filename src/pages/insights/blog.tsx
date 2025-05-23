@@ -31,39 +31,39 @@ const Blog: React.FC = () => {
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
     setError("");
-    console.log("Login attempt started");
+    
 
     if (!email || !password) {
-      console.log("Validation failed - missing email or password");
+     
       setError("Please enter both email and password");
       return;
     }
 
     try {
-      console.log("Making login request to server");
+      
       const res = await axios.post<LoginResponse>("/admin/login", {
         email,
         password,
       });
 
-      console.log("Login response received:", res.data);
+      // console.log("Login response received:", res.data);
 
       if (res.data.success) {
-        console.log("Login successful, preparing to redirect");
+        
         setShowLoginModal(false);
         setIsLoggedIn(true);
-        alert("Login successful - about to redirect to /insights/blogadmin");
+        // alert("Login successful - about to redirect to /insights/blogadmin");
 
         setTimeout(() => {
-          console.log("Now attempting navigation");
+          // console.log("Now attempting navigation");
           navigate("/insights/blogadmin");
         }, 1000);
       } else {
-        console.log("Login failed - server response unsuccessful");
+        
         setError(res.data.message || "Login failed. Please try again.");
       }
     } catch (err: any) {
-      console.error("Login error:", err);
+      // console.error("Login error:", err);
       let errorMsg = "Login failed. Please try again.";
       if (err.response?.data?.message) {
         errorMsg = err.response.data.message;
@@ -78,12 +78,12 @@ const Blog: React.FC = () => {
 
   const handleLogout = async () => {
     try {
-      console.log("Attempting logout...");
+      
       await axios.post("/auth/logout");
       setIsLoggedIn(false);
-      console.log("Logout successful");
+      // console.log("Logout successful");
     } catch (err) {
-      console.error("Logout error:", err);
+      // console.error("Logout error:", err);
       setError("Failed to logout. Please try again.");
     }
   };

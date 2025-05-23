@@ -36,14 +36,14 @@ const BlogAdmin: React.FC = () => {
   const fetchBlogs = async () => {
     setLoading(true);
     try {
-      console.log('Fetching blogs...');
+      // console.log('Fetching blogs...');
       const res = await axios.get('http://localhost:5000/api/v1/blogs');
       if (res.data.success) {
         setBlogs(res.data.data);
-        console.log('Blogs fetched:', res.data.data);
+        // console.log('Blogs fetched:', res.data.data);
       }
     } catch (err) {
-      console.error('Error fetching blogs:', err);
+      // console.error('Error fetching blogs:', err);
       setError('Failed to fetch blogs.');
     } finally {
       setLoading(false);
@@ -93,7 +93,7 @@ const BlogAdmin: React.FC = () => {
     try {
       if (selectedBlog) {
         // Update blog
-        console.log('Updating blog:', selectedBlog._id);
+        // console.log('Updating blog:', selectedBlog._id);
         const res = await axios.put(
           `http://localhost:5000/api/v1/blogs/${selectedBlog._id}`,
           {
@@ -111,7 +111,7 @@ const BlogAdmin: React.FC = () => {
         }
       } else {
         // Create blog
-        console.log('Creating blog...');
+        
         const res = await axios.post('http://localhost:5000/api/v1/blogs', {
           title: formData.title,
           content: formData.content,
@@ -141,7 +141,7 @@ const BlogAdmin: React.FC = () => {
     setSuccessMsg('');
 
     try {
-      console.log('Deleting blog:', id);
+      // console.log('Deleting blog:', id);
       const res = await axios.delete(`http://localhost:5000/api/v1/blogs/${id}`);
       if (res.data.success) {
         setSuccessMsg('Blog deleted successfully!');

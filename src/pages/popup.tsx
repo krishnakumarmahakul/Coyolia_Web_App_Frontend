@@ -35,7 +35,7 @@ Designation: ${designation || "(not provided)"}`);
 
   return (
     <>
-      {/* Trigger Button */}
+     
       <button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-6 right-6 z-50 bg-[#21204C] text-white px-5 py-3 rounded-full shadow-lg hover:bg-blue-700 transition"
@@ -43,7 +43,7 @@ Designation: ${designation || "(not provided)"}`);
         📩 Contact Coyolia
       </button>
 
-      {/* Modal */}
+      
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -68,7 +68,7 @@ Designation: ${designation || "(not provided)"}`);
                 Contact Coyolia Team
               </h2>
 
-              {/* Topic Dropdown */}
+              
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Reason for Contact
@@ -87,7 +87,7 @@ Designation: ${designation || "(not provided)"}`);
                 </select>
               </div>
 
-              {/* Full Name */}
+              
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Full Name
@@ -101,7 +101,7 @@ Designation: ${designation || "(not provided)"}`);
                 />
               </div>
 
-              {/* Email */}
+              
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Email Address
@@ -115,7 +115,7 @@ Designation: ${designation || "(not provided)"}`);
                 />
               </div>
 
-              {/* Phone (Updated label without 'optional') */}
+              
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Phone Number
@@ -129,7 +129,7 @@ Designation: ${designation || "(not provided)"}`);
                 />
               </div>
 
-              {/* Optional - Company Name */}
+              
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Company Name (optional)
@@ -143,7 +143,7 @@ Designation: ${designation || "(not provided)"}`);
                 />
               </div>
 
-              {/* Optional - Designation */}
+              
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Designation (optional)
@@ -157,7 +157,7 @@ Designation: ${designation || "(not provided)"}`);
                 />
               </div>
 
-              {/* Submit Button */}
+              
               <button
                 onClick={handleSubmit}
                 className="w-full bg-[#21204C] text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
