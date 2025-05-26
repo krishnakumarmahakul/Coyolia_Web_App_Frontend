@@ -27,7 +27,7 @@ const BlogAdmin: React.FC = () => {
 
   // Axios default to send cookies
   axios.defaults.withCredentials = true;
-
+  axios.defaults.baseURL = "http://localhost:5000/api/v1";
   // Fetch all blogs on mount
   useEffect(() => {
     fetchBlogs();
@@ -104,7 +104,7 @@ const BlogAdmin: React.FC = () => {
           }
         );
         if (res.data.success) {
-          setSuccessMsg('Blog updated successfully!');
+          // setSuccessMsg('Blog updated successfully!');
           // Refresh blogs list and select updated blog
           fetchBlogs();
           setSelectedBlog(res.data.data);
@@ -126,7 +126,7 @@ const BlogAdmin: React.FC = () => {
       }
     } catch (err) {
       console.error('Error saving blog:', err);
-      setError('Failed to save blog.');
+      // setError('Failed to save blog.');
     } finally {
       setLoading(false);
     }
@@ -142,7 +142,8 @@ const BlogAdmin: React.FC = () => {
 
     try {
       // console.log('Deleting blog:', id);
-      const res = await axios.delete(`http://localhost:5000/api/v1/blogs/${id}`);
+      const res = await axios.delete(`/blogs/${id}`);
+
       if (res.data.success) {
         setSuccessMsg('Blog deleted successfully!');
         fetchBlogs();
@@ -151,7 +152,7 @@ const BlogAdmin: React.FC = () => {
       }
     } catch (err) {
       console.error('Error deleting blog:', err);
-      setError('Failed to delete blog.');
+      // setError('Failed to delete blog.');
     } finally {
       setLoading(false);
     }
