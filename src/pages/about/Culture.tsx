@@ -27,9 +27,7 @@ const AboutCulture = () => {
 
         <div className="space-y-12">
           <div>
-            <h2 className="text-2xl font-semibold mb-3">
-              Innovation First
-            </h2>
+            
             <p className="text-base text-gray-700 leading-relaxed">
               • We don’t want the “approval seeking” working habits of any
               employee. We want every employee to use their confidence,
@@ -40,9 +38,7 @@ const AboutCulture = () => {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-3">
-              Collaborative Spirit
-            </h2>
+            
             <p className="text-base text-gray-700 leading-relaxed">
               • Think big, start small, move fast. Fail fast and fail safe
               without any fear.
@@ -50,9 +46,7 @@ const AboutCulture = () => {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-3">
-              Growth Mindset
-            </h2>
+            
             <p className="text-base text-gray-700 leading-relaxed">
               • We welcome diversity of all hues, age, gender, and locations to
               work with us, without any barrier
@@ -60,9 +54,7 @@ const AboutCulture = () => {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-3">
-              Growth Mindset
-            </h2>
+           
             <p className="text-base text-gray-700 leading-relaxed">
               • Invest 10% of the working time in training, upskilling and
               enhancement of knowledge

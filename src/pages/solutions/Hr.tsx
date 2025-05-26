@@ -7,10 +7,13 @@ const HR: React.FC = () => {
         HR and Recruitment Analytics
       </h2>
       <p className="text-lg leading-relaxed">
-        Coyolia's HR & Recruitment Analytics solutions are designed to provide deep, data-driven visibility into the entire talent lifecycle — from sourcing to retention.
+      Coyolia’s HR & Recruitment Analytics solutions are designed to provide deep, data-driven visibility into the entire talent lifecycle — from sourcing to retention. By aggregating and analyzing key HR and recruitment metrics, we help HR leaders, People Managers, Recruiters, Hiring Managers, and other key stakeholders with real-time dashboards and insights that support informed, intelligent decision-making. 
       </p>
       <p className="text-lg leading-relaxed">
-        What sets our solution apart is its ability to turn data into strategy. With customizable KPIs, predictive models, and visual insights, stakeholders can monitor recruitment performance and optimize workforce planning.
+       
+Whether it's tracking hiring funnel efficiency, identifying bottlenecks, or understanding workforce trends, our analytics empower organizations to stay agile and aligned with their talent goals.
+What sets our solution apart is its ability to turn data into strategy. With customizable KPIs, predictive models, and visual insights, stakeholders can monitor recruitment performance, assess diversity and inclusion goals, forecast attrition risks, and optimize workforce planning. Coyolia’s HR & Recruitment Analytics ensures not just reporting, but strategic enablement — helping companies build resilient, data-literate HR functions that proactively respond to business needs while enhancing employee experience and organizational growth
+
       </p>
     </section>
   );

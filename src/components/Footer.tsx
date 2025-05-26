@@ -7,6 +7,7 @@ import {
   Facebook,
   Instagram,
   Twitter,
+  Youtube,
   Linkedin
 } from 'lucide-react';
 
@@ -14,25 +15,30 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
+    // {
+    //   href: 'https://www.facebook.com/coyoliatech',
+    //   Icon: Facebook,
+    //   label: 'Facebook'
+    // },
+    // {
+    //   href: 'https://www.instagram.com/coyoliatech',
+    //   Icon: Instagram,
+    //   label: 'Instagram'
+    // },
+    // {
+    //   href: 'https://twitter.com/coyoliatech',
+    //   Icon: Twitter,
+    //   label: 'Twitter'
+    // },
     {
-      href: 'https://www.facebook.com/coyoliatech',
-      Icon: Facebook,
-      label: 'Facebook'
-    },
-    {
-      href: 'https://www.instagram.com/coyoliatech',
-      Icon: Instagram,
-      label: 'Instagram'
-    },
-    {
-      href: 'https://twitter.com/coyoliatech',
-      Icon: Twitter,
-      label: 'Twitter'
-    },
-    {
-      href: 'https://www.linkedin.com/company/coyoliatech',
+      href: 'https://www.linkedin.com/company/coyolia/',
       Icon: Linkedin,
       label: 'LinkedIn'
+    },
+    {
+      href: 'https://www.youtube.com/@CoyoliaTechnologies',
+      Icon: Youtube,
+      label: 'Youtube'
     }
   ];
 
@@ -102,7 +108,7 @@ const Footer: React.FC = () => {
             <div className="space-y-4 text-sm text-gray-300">
               <p className="flex items-center">
                 <Phone className="w-5 h-5 mr-2 text-[#c3b3fa]" />
-                +91 9885001831
+                +919739005000
               </p>
               <p className="flex items-center">
                 <Mail className="w-5 h-5 mr-2 text-[#c3b3fa]" />

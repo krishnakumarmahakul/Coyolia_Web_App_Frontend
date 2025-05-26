@@ -45,50 +45,65 @@ const Webinars: React.FC = () => {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="py-16 px-4"
+    // <motion.div
+    //   initial={{ opacity: 0 }}
+    //   animate={{ opacity: 1 }}
+    //   exit={{ opacity: 0 }}
+    //   className="py-16 px-4"
+    // >
+    //   <div className="max-w-7xl mx-auto">
+    //     <h1 className="text-4xl font-bold text-[#21204C] mb-8">Webinars</h1>
+
+    //     {/* Upcoming Webinars */}
+    //     <section className="mb-16">
+    //       <h2 className="text-3xl font-semibold text-[#21204C] mb-6">Upcoming Webinars</h2>
+    //       <div className="grid md:grid-cols-2 gap-8">
+    //         {upcomingWebinars.map((webinar, index) => (
+    //           <div
+    //             key={index}
+    //             className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
+    //           >
+    //             <h3 className="text-2xl font-semibold text-[#21204C] mb-2">{webinar.title}</h3>
+    //             <p className="text-sm text-gray-500 mb-2">📅 {webinar.date} | 🕒 {webinar.time}</p>
+    //             <p className="text-gray-600">{webinar.description}</p>
+    //           </div>
+    //         ))}
+    //       </div>
+    //     </section>
+
+    //     {/* Past Webinars */}
+    //     <section>
+    //       <h2 className="text-3xl font-semibold text-[#21204C] mb-6">Past Webinars</h2>
+    //       <div className="grid md:grid-cols-2 gap-8">
+    //         {pastWebinars.map((webinar, index) => (
+    //           <div
+    //             key={index}
+    //             className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
+    //           >
+    //             <h3 className="text-2xl font-semibold text-[#21204C] mb-2">{webinar.title}</h3>
+    //             <p className="text-sm text-gray-500 mb-2">📅 {webinar.date} | 🕒 {webinar.time}</p>
+    //             <p className="text-gray-600">{webinar.description}</p>
+    //           </div>
+    //         ))}
+    //       </div>
+    //     </section>
+    //   </div>
+    // </motion.div>
+    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center p-8">
+    <h1 className="text-5xl font-bold text-[#21204c] mb-4">
+      Page Under Construction
+    </h1>
+    <p className="text-lg text-gray-700 mb-6">
+      Our team is currently working on this page. Please check back soon!
+    </p>
+    {/* Optional: Add a link/button to go back home */}
+    <a
+      href="/"
+      className="inline-block px-6 py-3 bg-[#21204c] text-white rounded-md hover:bg-[#5a3e9a] transition"
     >
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-[#21204C] mb-8">Webinars</h1>
-
-        {/* Upcoming Webinars */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-semibold text-[#21204C] mb-6">Upcoming Webinars</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {upcomingWebinars.map((webinar, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
-              >
-                <h3 className="text-2xl font-semibold text-[#21204C] mb-2">{webinar.title}</h3>
-                <p className="text-sm text-gray-500 mb-2">📅 {webinar.date} | 🕒 {webinar.time}</p>
-                <p className="text-gray-600">{webinar.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Past Webinars */}
-        <section>
-          <h2 className="text-3xl font-semibold text-[#21204C] mb-6">Past Webinars</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {pastWebinars.map((webinar, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
-              >
-                <h3 className="text-2xl font-semibold text-[#21204C] mb-2">{webinar.title}</h3>
-                <p className="text-sm text-gray-500 mb-2">📅 {webinar.date} | 🕒 {webinar.time}</p>
-                <p className="text-gray-600">{webinar.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      </div>
-    </motion.div>
+      Go to Home
+    </a>
+  </div>
   );
 };
 

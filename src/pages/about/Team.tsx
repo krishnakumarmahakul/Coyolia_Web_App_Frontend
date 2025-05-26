@@ -1,6 +1,48 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import AvinashKulkarni from "../../assets/Avinash Kulkarni.jpg";
+import RaviKant from "../../assets/Ravikanth Taduri.jpg";
+import cto from "../../assets/Cto.jpg"; 
+import aditya from "../../assets/Aditya Telkar.jpg"; 
+import kanchan from "../../assets/kanchna.jpg"; 
+
+const leadershipTeam = [
+  {
+    name: 'Avinash Kulkarni',
+    description:
+      'With 29 years of experience in leading global corporations like Xerox, Hitachi, RIL, and IL&FS, Avinash Kulkarni brings a wealth of expertise to Coyolia Technologies. His diverse background spans the not-for-profit sector and dynamic startup environments. Avinash is a recognized expert in cloud computing, IT infrastructure, sales training, and forging global alliances, driving innovation and success across various industries.',
+    image: AvinashKulkarni,
+  },
+  {
+    name: 'Ravikanth Taduri',
+    description:
+      ' With 21 years of experience in mid-market companies, Ravikanth Taduri has excelled as a Head of HR and business partner. Ravikanth specializes in developing and implementing SOPs, cultivating organisational culture, and building strong foundations for IT and ITES companies',
+    image: RaviKant,
+  },
+  {
+    name: 'Aniruddha Deswandikar',
+    description:
+      'Seasoned technologist with 30 years of experience across startups, dotcoms, and large enterprises. Author of Engineering Data Mesh in Azure Cloud (https://a.co/d/4Xw62DQ). For 18 years, helped Microsoft’s enterprise clients and partners solve complex challenges through innovative architectures and scalable solutions. Led a Technology Showcase Center for a decade and managed senior teams of developers and architects. Known for fostering creativity, challenging the status quo, and aligning teams with strategic goals.',
+    image: cto,
+  },
+];
+
+const technicalExperts = [
+  {
+    name: 'Aditya Telkar',
+    description:
+      'Software Developer',
+    image: aditya,
+  },
+  {
+    name: 'Kanchana kulkarni',
+    description:
+      ' Training Manager',
+    image: kanchan,
+  },
+];
+
 const AboutTeam = () => {
   return (
     <motion.div
@@ -15,42 +57,40 @@ const AboutTeam = () => {
           Meet the innovative minds behind COYOLIA's AI-powered solutions. Our diverse team of experts combines deep technical knowledge with industry expertise to deliver cutting-edge career development solutions.
         </p>
 
+        {/* Leadership Team */}
         <h2 className="text-3xl font-semibold text-[#21204C] mb-6">Leadership Team</h2>
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold text-[#21204C] mb-2">Dr. Mansee Bal Bhargava</h3>
-            <p className="text-gray-600">
-              An Entrepreneur, Researcher, Educator, and Speaker focusing on Environment-Design-Policy. She inspires learners through experience-based mentoring and workshops, combining innovation with sustainability.
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold text-[#21204C] mb-2">Anubha Maneshwar</h3>
-            <p className="text-gray-600">
-              Founder of GirlScript Foundation, she is known for revolutionizing tech education among underserved communities, empowering thousands through inclusive coding programs and events.
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold text-[#21204C] mb-2">Aditya Dubey</h3>
-            <p className="text-gray-600">
-              A Climate Activist and Social Entrepreneur committed to sustainability. He drives initiatives for climate action, engaging youth to create impactful ecological solutions.
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold text-[#21204C] mb-2">Vibha Tripathi</h3>
-            <p className="text-gray-600">
-              Founder of Boond, she is a social entrepreneur focused on rural electrification and clean energy access. Her efforts have transformed numerous underserved communities.
-            </p>
-          </div>
+          {leadershipTeam.map((member, index) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-lg flex gap-4 items-start">
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-16 h-16 rounded-full object-cover"
+              />
+              <div>
+                <h3 className="text-xl font-bold text-[#21204C] mb-1">{member.name}</h3>
+                <p className="text-gray-600">{member.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
 
+        {/* Technical Experts */}
         <h2 className="text-3xl font-semibold text-[#21204C] mb-6">Technical Experts</h2>
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold text-[#21204C] mb-4">Technical Team</h3>
-            <p className="text-gray-600">
-              Our technical team consists of AI researchers, data scientists, and software engineers who work together to build and maintain our cutting-edge career development platform.
-            </p>
-          </div>
+          {technicalExperts.map((expert, index) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-lg flex gap-4 items-start">
+              <img
+                src={expert.image}
+                alt={expert.name}
+                className="w-16 h-16 rounded-full object-cover"
+              />
+              <div>
+                <h3 className="text-xl font-semibold text-[#21204C] mb-1">{expert.name}</h3>
+                <p className="text-gray-600">{expert.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </motion.div>

@@ -23,25 +23,25 @@ const Home = () => {
   const features = [
     {
       icon: Brain,
-      title: "Smart Career Assessment",
+      title: "Curriculum Development Services",
       description:
         "AI-powered insights to match your skills and interests with the best career options.",
     },
     {
       icon: ChartBar,
-      title: "Performance Dashboard",
+      title: "Professional Services",
       description:
         "Track your skill development, job applications, and career progress.",
     },
     {
       icon: Target,
-      title: "AI-Powered HR Solutions",
+      title: "AI Solutions",
       description:
         "Automate hiring and talent acquisition with smart AI tools.",
     },
     {
       icon: BookOpen,
-      title: "Learning Hub",
+      title: "HR and Recruitment Analytics",
       description:
         "Access curated resources and mentorship programs to enhance your skills.",
     },
@@ -73,7 +73,25 @@ const Home = () => {
       linkedin: "https://www.linkedin.com/in/anideswandikar/",
     },
   ];
-
+  const handleScrollUp = () => {
+    // Wait a moment to ensure DOM is updated
+    setTimeout(() => {
+      const frontElement = document.querySelector('.front-component-class'); // Replace with real class
+      const frontBottom = frontElement
+        ? frontElement.getBoundingClientRect().bottom + window.scrollY
+        : window.innerHeight;
+  
+      const scrollPosition = frontBottom + 20; // Add small buffer below
+  
+      window.scrollTo({
+        top: scrollPosition,
+        behavior: 'smooth',
+      });
+    }, 50);
+  };
+  
+  
+  
  
   const ReadMore = ({ text, limit = 200 }: any) => {
     const [expanded, setExpanded] = useState(false);
@@ -122,13 +140,14 @@ const Home = () => {
                 Powering Workforce Agility Through AI, Analytics, and Skilling
               </p>
               <div className="space-x-4">
-                <Link
-                  to="/services/career-counseling"
-                  className="bg-[#7655b7] hover:bg-[#634a99] px-6 py-3 rounded-full inline-flex items-center transition-colors"
-                >
-                  Get Started
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
+              <button
+  onClick={handleScrollUp}
+  className="bg-[#7655b7] hover:bg-[#634a99] px-6 py-3 rounded-full inline-flex items-center transition-colors"
+>
+  Get Started
+  <ArrowRight className="ml-2 w-5 h-5" />
+</button>
+
                 <Link
                   to="/about"
                   className="border border-white hover:bg-white hover:text-[#21204C] px-6 py-3 rounded-full inline-flex items-center transition-colors"
@@ -198,15 +217,15 @@ const Home = () => {
           {[
             {
               title: "Our Vision",
-              text: "We envision a world full of opportunity, powered by digital public goods and open-source innovation. At Coyolia Technologies, we aim to reduce corruption, tackle global challenges, and uplift communities through Indian and global IP.",
+              text: "At Coyolia Technologies, our vision is to create a world of abundant opportunities for youth by leveraging the power of the Digital Public Goods Alliance. We aim to harness Indian and open-source IP to tackle global challenges, reduce corruption, and empower communities worldwide.",
             },
             {
               title: "Our Mission",
-              text: "As Digital Ambassadors, we support and scale open-source projects by collaborating with the Government of India and DPGA. We're committed to skill-building programs for youth in Ethiopia, India, and African Union nations.",
+              text: "As Digital Ambassadors, Coyolia Technologies will champion open-source community projects in India and beyond. Collaborating with the Government of India and DPGA, we will promote these solutions in new regions, infuse innovative skills and training for youth in Ethiopia, India, and African Union members, and support open standards-based technologies to foster a zero-corruption environment. We stay local while integrating global best practices.",
             },
             {
               title: "Our Values",
-              text: "Our spirit thrives on youth-driven energy, fearless innovation, and Indo-African friendship. We champion cultural exchange, tech education, and ethical development of open-source technologies across borders.",
+              text: "Coyolia Technologies embodies energy, youthful enthusiasm, cultural collaboration, fearless competition, and strong Indo-African friendship. As Digital Ambassadors, Coyolia Technologies will champion open-source community projects in India and beyond. Collaborating with the Government of India and DPGA, we will promote these solutions in new regions, infuse innovative skills and training for youth in India, the Middle East and African Union members, and support open standards-based technologies to foster a positive and ethical environment. We stay local while integrating global best practices.",
             },
           ].map((item, idx) => (
             <motion.div

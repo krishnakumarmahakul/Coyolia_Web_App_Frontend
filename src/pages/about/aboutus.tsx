@@ -4,15 +4,15 @@ const AboutUsSection = () => {
   const sections = [
     {
       title: "Our Vision",
-      text: "We envision a world full of opportunity, powered by digital public goods and open-source innovation. At Coyolia Technologies, we aim to reduce corruption, tackle global challenges, and uplift communities through Indian and global IP.",
+      text: "At Coyolia Technologies, our vision is to create a world of abundant opportunities for youth by leveraging the power of the Digital Public Goods Alliance. We aim to harness Indian and open-source IP to tackle global challenges, reduce corruption, and empower communities worldwide.",
     },
     {
       title: "Our Mission",
-      text: "As Digital Ambassadors, we support and scale open-source projects by collaborating with the Government of India and DPGA. We're committed to skill-building programs for youth in Ethiopia, India, and African Union nations.",
+      text: "As Digital Ambassadors, Coyolia Technologies will champion open-source community projects in India and beyond. Collaborating with the Government of India and DPGA, we will promote these solutions in new regions, infuse innovative skills and training for youth in Ethiopia, India, and African Union members, and support open standards-based technologies to foster a zero-corruption environment. We stay local while integrating global best practices.",
     },
     {
       title: "Our Values",
-      text: "Our spirit thrives on youth-driven energy, fearless innovation, and Indo-African friendship. We champion cultural exchange, tech education, and ethical development of open-source technologies across borders.",
+      text: "Coyolia Technologies embodies energy, youthful enthusiasm, cultural collaboration, fearless competition, and strong Indo-African friendship. As Digital Ambassadors, Coyolia Technologies will champion open-source community projects in India and beyond. Collaborating with the Government of India and DPGA, we will promote these solutions in new regions, infuse innovative skills and training for youth in India, the Middle East and African Union members, and support open standards-based technologies to foster a positive and ethical environment. We stay local while integrating global best practices.",
     },
   ];
 
