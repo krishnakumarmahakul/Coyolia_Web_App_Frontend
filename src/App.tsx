@@ -25,7 +25,7 @@ import Counselorlogin from "./pages/services/counselor-login";
 import CounselorDashboard from "./pages/services/counselor-dashboard";
 import PaidSession from "./pages/services/paid-session";
 import Contactus from "./pages/contactus/Contactus";
-import BlogAdmin from "./pages/insights/Blogadmin";
+// import BlogAdmin from "./pages/insights/Blogadmin";
 import { AnimatePresence } from "framer-motion";
 import Editech from "./pages/industries/edtech";
 import BlogList from "./pages/insights/BlogList";
@@ -101,7 +101,7 @@ function App() {
               <Route path="/insights/Blog" element={<InsightsBlogs />} />
               <Route path="/insights/Events" element={<InsightsEvents />} />
               <Route path="/insights/Webinars" element={<InsightsWebinars />} />
-              <Route path="/insights/blogadmin" element={<BlogAdmin />} />
+              {/* <Route path="/insights/blogadmin" element={<BlogAdmin />} /> */}
               <Route path="/insights/bloglist" element={<BlogList />} />
 
               {/* Services */}
