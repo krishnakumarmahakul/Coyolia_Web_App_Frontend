@@ -132,7 +132,7 @@ const Home = () => {
                 COYOLIA
                 <br />
                 <span className="text-2xl md:text-3xl font-medium ">
-                  Cohort of young leaders in action
+                  Cohort Of Young Leaders In Action
                 </span>
               </h1>
 

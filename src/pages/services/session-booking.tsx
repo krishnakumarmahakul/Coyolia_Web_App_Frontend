@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css"; // Required to prevent broken layout
+import "react-calendar/dist/Calendar.css"; 
 import { useNavigate } from "react-router-dom";
+import emailjs from '@emailjs/browser';
 
 const allTimeSlots = ["4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM"];
 const trainees = ["Sruti"];
@@ -24,6 +25,8 @@ const SessionBooking: React.FC = () => {
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedTrainee, setSelectedTrainee] = useState(trainees[0]);
   const [showAvailability, setShowAvailability] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -44,20 +47,89 @@ const SessionBooking: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(
-      `✅ Free Session booked with ${selectedTrainee} on ${selectedDate?.toDateString()} at ${selectedTime}`
-    );
+  
+    if (!selectedDate || !selectedTime) {
+      alert("Please select a session date and time.");
+      return;
+    }
+  
+
+    const adminParams = {
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      city: form.city,
+      selectedDate: selectedDate.toDateString(),
+      selectedTime,
+      reminder: form.reminder ? "Yes" : "No",
+    };
+  
+    // this is the emial js template that send to the Admin side
+    emailjs
+      .send(
+        "service_w2wcbf4", 
+        "template_by8matk",
+        adminParams,
+        "iTFILg7mO4Ndqiw8a" 
+      )
+      .then(() => {
+        // console.log("✅ Admin email sent");
+      })
+      .catch((error) => {
+        // console.error("❌ Admin email error:", error);
+      });
+
+  
+    // Send confirmation email to user
+
+    emailjs.send(
+      "service_w2wcbf4", // ✅ Your service ID
+      "template_lme9kr4", // ✅ Your template ID
+      {
+        name: form.name,
+        selectedDate: selectedDate.toDateString(),     
+        selectedTime: selectedTime,                    
+        city: form.city,
+        phone: form.phone,
+        email: form.email,                             
+        to_email: form.email,                          
+        meetingLink: "https://meet.google.com/jxp-kwot-ztd" 
+      },
+      "iTFILg7mO4Ndqiw8a" // ✅ Your public key
+    )
+    .then((res) => {
+      // console.log("✅ User confirmation sent:", res);
+    })
+    .catch((error) => {
+      // console.error("❌ User confirmation error:", error);
+    });
+    
+    
+
+  
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 2500);
     setShowPaidOffer(true);
   };
+  
 
   const handlePaidSessionConfirm = () => {
     setPaidConfirmed(true);
     setShowPaidOffer(false);
-    // alert(
-    //   "🎉 You’ve upgraded to a 60-minute paid session. Details will be emailed to you after payment!"
-    // );
-    navigate("/services/paid-session");
+    navigate("/services/paidsessioninitial");
+    // setTimeout
+    // setShowPopup(true);
+    // setTimeout(() => {
+    //   setShowPopup(false);
+    // }, 2500);
+    // setTimeout(() => {
+    //   setShowPopup(false); // Hide popup before navigating
+    //   navigate("/services/paid-session");
+    // }, 2500);
   };
+  
 
   const handlePaidSessionDecline = () => {
     setShowPaidOffer(false);
@@ -418,6 +490,15 @@ const SessionBooking: React.FC = () => {
         )}
         {/* *************************************************************************** */}
       </div>
+      {showPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="bg-white text-[#21204c] rounded-lg shadow-lg p-6 w-[90%] max-w-md text-center">
+            <p className="text-lg font-medium">
+              Thank You! Session Confirmed, You will recieve a mail 
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Paid Session Modal */}
       {showPaidOffer && (
@@ -428,12 +509,12 @@ const SessionBooking: React.FC = () => {
             </h3>
             <p className="text-gray-600 mb-6">
               Want to go deeper into your career plan? Upgrade now to a full
-              60-minute 1-on-1 personalized session for just ₹299.
+              60-minute 1-on-1 personalized session .
             </p>
             <div className="flex justify-center gap-4">
               <button
                 onClick={handlePaidSessionConfirm}
-                className="bg-[#7655b7] text-white px-6 py-2 rounded-full hover:bg-[#6346a3]"
+                className="bg-[#21204c] text-white px-6 py-2 rounded-full hover:bg-[#6346a3]"
               >
                 Upgrade Now
               </button>

@@ -89,104 +89,120 @@ const Blog: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#21204c] px-4 py-6 md:px-6 md:py-8">
-      {/* Header and login/logout */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-        <h1 className="text-2xl font-bold"> Coyolia Blog's</h1>
-        {isLoggedIn ? (
-          <button
-            onClick={handleLogout}
-            className="bg-red-600 text-white px-4 py-2 rounded-md font-medium hover:bg-red-700 transition w-full md:w-auto"
-          >
-            Logout
-          </button>
-        ) : (
-          <button
-            onClick={() => setShowLoginModal(true)}
-            className="bg-[#21204c] text-white px-4 py-2 rounded-md font-medium hover:bg-[#1a1a3d] transition w-full md:w-auto"
-          >
-            Admin Login
-          </button>
-        )}
+    <>
+      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center p-8">
+        <h1 className="text-3xl font-bold text-[#21204c] mb-4">
+          Our team is currently working on this page. Please check back soon!
+        </h1>
+        <p className="text-lg text-gray-700 mb-6"></p>
+        {/* Optional: Add a link/button to go back home */}
+        <a
+          href="/"
+          className="inline-block px-6 py-3 bg-[#21204c] text-white rounded-md hover:bg-[#5a3e9a] transition"
+        >
+          Go to Home
+        </a>
       </div>
+    </>
 
-      {/* Show error messages */}
-      {error && !showLoginModal && (
-        <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">
-          <p>{error}</p>
-        </div>
-      )}
+    // <div className="min-h-screen bg-white text-[#21204c] px-4 py-6 md:px-6 md:py-8">
+    //   {/* Header and login/logout */}
+    //   <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+    //     <h1 className="text-2xl font-bold"> Coyolia Blog's</h1>
+    //     {isLoggedIn ? (
+    //       <button
+    //         onClick={handleLogout}
+    //         className="bg-red-600 text-white px-4 py-2 rounded-md font-medium hover:bg-red-700 transition w-full md:w-auto"
+    //       >
+    //         Logout
+    //       </button>
+    //     ) : (
+    //       <button
+    //         onClick={() => setShowLoginModal(true)}
+    //         className="bg-[#21204c] text-white px-4 py-2 rounded-md font-medium hover:bg-[#1a1a3d] transition w-full md:w-auto"
+    //       >
+    //         Admin Login
+    //       </button>
+    //     )}
+    //   </div>
 
-      {/* Admin Login Modal */}
-      {showLoginModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md shadow-xl">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">Admin Login</h2>
-              <button
-                onClick={() => {
-                  setShowLoginModal(false);
-                  setError("");
-                }}
-                className="text-gray-500 hover:text-gray-700 text-2xl"
-              >
-                &times;
-              </button>
-            </div>
+    //   {/* Show error messages */}
+    //   {error && !showLoginModal && (
+    //     <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">
+    //       <p>{error}</p>
+    //     </div>
+    //   )}
 
-            {error && (
-              <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 mb-4 rounded">
-                <p>{error}</p>
-              </div>
-            )}
+    //   {/* Admin Login Modal */}
+    //   {showLoginModal && (
+    //     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    //       <div className="bg-white rounded-lg p-6 w-full max-w-md shadow-xl">
+    //         <div className="flex justify-between items-center mb-4">
+    //           <h2 className="text-xl font-bold">Admin Login</h2>
+    //           <button
+    //             onClick={() => {
+    //               setShowLoginModal(false);
+    //               setError("");
+    //             }}
+    //             className="text-gray-500 hover:text-gray-700 text-2xl"
+    //           >
+    //             &times;
+    //           </button>
+    //         </div>
 
-            <form onSubmit={handleLogin}>
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#21204c]"
-                  required
-                />
-              </div>
+    //         {error && (
+    //           <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 mb-4 rounded">
+    //             <p>{error}</p>
+    //           </div>
+    //         )}
 
-              <div className="mb-6">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Password
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#21204c]"
-                  required
-                />
-              </div>
+    //         <form onSubmit={handleLogin}>
+    //           <div className="mb-4">
+    //             <label
+    //               htmlFor="email"
+    //               className="block text-sm font-medium text-gray-700 mb-1"
+    //             >
+    //               Email
+    //             </label>
+    //             <input
+    //               type="email"
+    //               id="email"
+    //               value={email}
+    //               onChange={(e) => setEmail(e.target.value)}
+    //               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#21204c]"
+    //               required
+    //             />
+    //           </div>
 
-              <button
-                type="submit"
-                className="w-full bg-[#21204c] text-white py-2 rounded-md font-semibold hover:bg-[#1a1a3d] transition"
-              >
-                Login
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
-      <BlogList/>
-    </div>
+    //           <div className="mb-6">
+    //             <label
+    //               htmlFor="password"
+    //               className="block text-sm font-medium text-gray-700 mb-1"
+    //             >
+    //               Password
+    //             </label>
+    //             <input
+    //               type="password"
+    //               id="password"
+    //               value={password}
+    //               onChange={(e) => setPassword(e.target.value)}
+    //               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#21204c]"
+    //               required
+    //             />
+    //           </div>
+
+    //           <button
+    //             type="submit"
+    //             className="w-full bg-[#21204c] text-white py-2 rounded-md font-semibold hover:bg-[#1a1a3d] transition"
+    //           >
+    //             Login
+    //           </button>
+    //         </form>
+    //       </div>
+    //     </div>
+    //   )}
+    //   <BlogList/>
+    // </div>
   );
 };
 

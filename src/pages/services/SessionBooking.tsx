@@ -65,6 +65,9 @@ const SessionBooking = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6 md:p-12 text-[#21204C]">
+
+
+      <h1>this is the second components</h1>
       <div className="bg-white shadow-xl rounded-2xl p-8 border border-gray-200 max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold mb-6 text-[#7655b7]">Book Your Free Session</h2>
         <form onSubmit={handleSubmit} className="space-y-6">

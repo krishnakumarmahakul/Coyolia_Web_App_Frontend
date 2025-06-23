@@ -33,14 +33,15 @@ import Solution from "./pages/solutions/Solution";
 import AboutUsSection from "./pages/about/aboutus";
 import Services from "./pages/services/services";
 import HR from "./pages/solutions/Hr";
+import PaidsessionInitial from "./pages/services/paid-sessionInitial";
 
 const NotFound = () => (
   <div className="flex flex-col items-center justify-center min-h-[60vh] text-center p-8">
-    <h1 className="text-5xl font-bold text-[#21204c] mb-4">
-      Page Under Construction
+    <h1 className="text-3xl font-bold text-[#21204c] mb-4">
+          Our team is currently working on this page. Please check back soon!
     </h1>
     <p className="text-lg text-gray-700 mb-6">
-      Our team is currently working on this page. Please check back soon!
+      
     </p>
     {/* Optional: Add a link/button to go back home */}
     <a
@@ -122,6 +123,7 @@ function App() {
                 element={<CounselorDashboard />}
               />
               <Route path="/services/paid-session" element={<PaidSession />} />
+              <Route path="/services/paidsessioninitial" element={<PaidsessionInitial />} />
 
               {/* Industries */}
               <Route path="/industries/edtech" element={<Editech />} />

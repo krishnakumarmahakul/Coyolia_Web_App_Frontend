@@ -6,11 +6,13 @@ const PaidSession = () => {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const handlePayment = () => {
-    alert("✅ Payment successful! Your session is confirmed.");
+    
+    alert("");
   };
 
   return (
     <div className="p-6 sm:p-10 max-w-5xl mx-auto text-[#21204C]">
+      
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
