@@ -1,65 +1,143 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import coyoliaLogo from '../../assets/CoyoliaPrimarylogo.avif';
 
 const InsightsEvents: React.FC = () => {
   return (
-    // <motion.div
-    //   initial={{ opacity: 0 }}
-    //   animate={{ opacity: 1 }}
-    //   exit={{ opacity: 0 }}
-    //   className="py-16 px-4"
-    // >
-    //   <div className="max-w-7xl mx-auto">
-    //     <h1 className="text-4xl font-bold text-[#21204C] mb-8">Upcoming Events</h1>
-    //     <p className="text-lg text-gray-600 mb-12">
-    //       Stay updated with AmbarGlow’s latest webinars, career talks, and skill-development workshops. These events are designed to help you grow professionally and stay ahead in your career journey.
-    //     </p>
-
-    //     <div className="grid md:grid-cols-2 gap-8">
-    //       {/* Event 1 */}
-    //       <div className="bg-white p-6 rounded-lg shadow-lg">
-    //         <h2 className="text-2xl font-semibold text-[#21204C] mb-2">AI Career Bootcamp</h2>
-    //         <p className="text-sm text-gray-500 mb-2">📅 April 25, 2025 | 🕒 4:00 PM - 6:00 PM IST</p>
-    //         <p className="text-gray-600">
-    //           Join our exclusive AI Bootcamp to explore real-world applications of AI in the workplace. Ideal for students and early professionals.
-    //         </p>
-    //       </div>
-
-    //       {/* Event 2 */}
-    //       <div className="bg-white p-6 rounded-lg shadow-lg">
-    //         <h2 className="text-2xl font-semibold text-[#21204C] mb-2">Webinar: Navigating Career Transitions</h2>
-    //         <p className="text-sm text-gray-500 mb-2">📅 May 3, 2025 | 🕒 5:00 PM - 6:30 PM IST</p>
-    //         <p className="text-gray-600">
-    //           A panel discussion featuring HR experts and industry mentors to guide you through successful career pivots and upskilling strategies.
-    //         </p>
-    //       </div>
-
-    //       {/* Event 3 */}
-    //       <div className="bg-white p-6 rounded-lg shadow-lg">
-    //         <h2 className="text-2xl font-semibold text-[#21204C] mb-2">Campus Hiring Connect</h2>
-    //         <p className="text-sm text-gray-500 mb-2">📅 May 15, 2025 | 🕒 11:00 AM - 1:00 PM IST</p>
-    //         <p className="text-gray-600">
-    //           Connect with recruiters from top companies and understand hiring trends, internship opportunities, and expectations from fresh graduates.
-    //         </p>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </motion.div>
-    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center p-8">
-    <h1 className="text-5xl font-bold text-[#21204c] mb-4">
-      Page Under Construction
-    </h1>
-    <p className="text-lg text-gray-700 mb-6">
-      Our team is currently working on this page. Please check back soon!
-    </p>
-    {/* Optional: Add a link/button to go back home */}
-    <a
-      href="/"
-      className="inline-block px-6 py-3 bg-[#21204c] text-white rounded-md hover:bg-[#5a3e9a] transition"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="min-h-screen bg-[#e1d1ff] font-sans text-gray-800"
     >
-      Go to Home
-    </a>
-  </div>
+      {/* Header */}
+      {/* <header className="flex justify-start items-center gap-8 p-5 bg-white border-b border-gray-300">
+        <img 
+          src={coyoliaLogo} 
+          alt="coyolia logo" 
+          className="h-10 w-[109px]"
+        />
+      </header> */}
+
+      {/* Hero Section */}
+      <section className="text-center py-10 px-5 bg-gradient-to-br from-[#26255f] to-[#7655b7]">
+        <div className="inline-block bg-[#d8e9ff] px-4 py-2 rounded-full mb-4 font-bold text-[#004aad]">
+          July 8th , 2025 · Hybrid Event
+        </div>
+        <h1 className="text-4xl my-2">
+          <strong>EDM Webinar</strong>: <span className="text-white">Cloud Migration</span>
+        </h1>
+        <p className="text-lg mt-2 text-[#f0f0f0]">
+          Transform your legacy and on-premise applications to the cloud with expert guidance from industry leaders
+        </p>
+        <a 
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfL-bNpgy7P_rK-plcFkFq9eQnzkhj2FD4zIZqCQuqtMkKztA/viewform?usp=dialog" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-6 px-6 py-3 font-bold text-white bg-[#7655b7] rounded-lg hover:bg-[#0061aa] transition-colors"
+        >
+          Register Now – It's Free!
+        </a>
+      </section>
+
+      {/* Event Details */}
+      <section className="py-10 px-5 text-center">
+        <h2 className="mb-8 text-2xl">Event Details</h2>
+        <div className="flex justify-center gap-5 flex-wrap">
+          <div className="bg-white p-5 rounded-xl w-64 shadow-sm">
+            <h3 className="mb-1">Date</h3>
+            <p>July 8th , 2025<br />(Tuesday)</p>
+          </div>
+          <div className="bg-white p-5 rounded-xl w-64 shadow-sm">
+            <h3 className="mb-1">Time</h3>
+            <p>4:00 PM – 5:00 PM IST</p>
+          </div>
+          <div className="bg-white p-5 rounded-xl w-64 shadow-sm">
+            <h3 className="mb-1">Venue</h3>
+            <p>Apeejay Business Centre<br />Park Hotel, Somajiguda, Hyderabad</p>
+          </div>
+          <div className="bg-white p-5 rounded-xl w-64 shadow-sm">
+            <h3 className="mb-1">Format</h3>
+            <p>Hybrid (In-person + Zoom)</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Speakers */}
+      <section className="py-10 px-5 text-center">
+        <h2 className="mb-8 text-2xl">Expert Speakers</h2>
+        <div className="flex justify-center gap-5 flex-wrap">
+          <div className="bg-white p-5 rounded-xl w-64 shadow-sm">
+            <h3 className="mb-1">Avinash Kulkarni</h3>
+            <p><strong> CEO ,Coyolia Technologies</strong><br />Industry Expert</p>
+          </div>
+          <div className="bg-white p-5 rounded-xl w-64 shadow-sm">
+            <h3 className="mb-1">Ravikanth Taduri</h3>
+            <p><strong>Co-Founder, Data Meadows</strong><br />Industry Expert</p>
+          </div>
+          <div className="bg-white p-5 rounded-xl w-64 shadow-sm">
+            <h3 className="mb-1">Aniruddha Deswandikar</h3>
+            <p><strong>CTO, Coyolia Technologies</strong><br />AWS SME</p>
+          </div>
+          <div className="bg-white p-5 rounded-xl w-64 shadow-sm">
+            <h3 className="mb-1">Naveen Andey</h3>
+            <p><strong> COO, Data Meadows</strong><br />Cloud BI Expert</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Highlights */}
+      <section className="py-10 px-5 text-center">
+        <h2 className="mb-8 text-2xl">What You'll Learn</h2>
+        <p className="mb-4">
+          Get expert insights on migrating your legacy and on-premise applications to the cloud
+        </p>
+        <ul className="text-left inline-block list-none pl-0">
+          <li className="py-1 pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-[#0077c0]">
+            Legacy application modernization strategies
+          </li>
+          <li className="py-1 pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-[#0077c0]">
+            On-premise to cloud migration best practices
+          </li>
+          <li className="py-1 pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-[#0077c0]">
+            Cost optimization and security considerations
+          </li>
+          <li className="py-1 pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-[#0077c0]">
+            Real-world case studies and success stories
+          </li>
+        </ul>
+      </section>
+
+      {/* About */}
+      <section className="py-10 px-5 text-center">
+        <h2 className="mb-8 text-2xl">About Data Meadows</h2>
+        <p className="max-w-2xl mx-auto">
+          Data Meadows is a cutting-edge cloud-based Business Intelligence tool designed to empower organizations with
+          dashboarding, forecasting, and data-driven decision-making. Our platform turns raw data into actionable insights for the cloud era.
+        </p>
+      </section>
+
+      {/* CTA */}
+      <section className="py-10 px-5 text-center bg-gradient-to-r from-[#26255f] to-[#7655b7]">
+        <h2 className="text-2xl mb-4">Ready to Transform Your Cloud Journey?</h2>
+        <p className="mb-4 text-[#f0f0f0]">
+          Don't miss this opportunity to learn from industry experts and get your free migration roadmap.
+        </p>
+        <a 
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfL-bNpgy7P_rK-plcFkFq9eQnzkhj2FD4zIZqCQuqtMkKztA/viewform?usp=dialog" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-4 px-6 py-3 font-bold text-white bg-[#7655b7] rounded-lg hover:bg-[#0061aa] transition-colors"
+        >
+          Secure Your Spot Now →
+        </a>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-[#f0f0f0] text-center p-5 text-sm">
+        &copy; 2025 Coyolia Technologies · Powered by AWS
+      </footer>
+    </motion.div>
   );
 };
 

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css"; 
+import "react-calendar/dist/Calendar.css";
 import { useNavigate } from "react-router-dom";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 
 const allTimeSlots = ["4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM"];
 const trainees = ["Sruti"];
@@ -26,6 +26,20 @@ const SessionBooking: React.FC = () => {
   const [selectedTrainee, setSelectedTrainee] = useState(trainees[0]);
   const [showAvailability, setShowAvailability] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [selectedProfessions, setSelectedProfessions] = useState<string[]>([]);
+  const [showOtherInput, setShowOtherInput] = useState(false);
+  const [otherProfession, setOtherProfession] = useState("");
+
+  const professions = [
+    "",
+    "Musician",
+    "Anthropologist",
+    "Veterinary Doctor",
+    "Chartered Accountant",
+    "Dancer",
+    "Magician",
+    "Fashion Designer",
+  ];
 
   const [form, setForm] = useState({
     name: "",
@@ -47,12 +61,11 @@ const SessionBooking: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     if (!selectedDate || !selectedTime) {
       alert("Please select a session date and time.");
       return;
     }
-  
 
     const adminParams = {
       name: form.name,
@@ -61,16 +74,20 @@ const SessionBooking: React.FC = () => {
       city: form.city,
       selectedDate: selectedDate.toDateString(),
       selectedTime,
+      professions:
+        selectedProfessions.length > 0
+          ? selectedProfessions.join(", ")
+          : "None selected",
       reminder: form.reminder ? "Yes" : "No",
     };
-  
+
     // this is the emial js template that send to the Admin side
     emailjs
       .send(
-        "service_w2wcbf4", 
+        "service_w2wcbf4",
         "template_by8matk",
         adminParams,
-        "iTFILg7mO4Ndqiw8a" 
+        "iTFILg7mO4Ndqiw8a"
       )
       .then(() => {
         // console.log("✅ Admin email sent");
@@ -79,41 +96,41 @@ const SessionBooking: React.FC = () => {
         // console.error("❌ Admin email error:", error);
       });
 
-  
     // Send confirmation email to user
 
-    emailjs.send(
-      "service_w2wcbf4", // ✅ Your service ID
-      "template_lme9kr4", // ✅ Your template ID
-      {
-        name: form.name,
-        selectedDate: selectedDate.toDateString(),     
-        selectedTime: selectedTime,                    
-        city: form.city,
-        phone: form.phone,
-        email: form.email,                             
-        to_email: form.email,                          
-        meetingLink: "https://meet.google.com/jxp-kwot-ztd" 
-      },
-      "iTFILg7mO4Ndqiw8a" // ✅ Your public key
-    )
-    .then((res) => {
-      // console.log("✅ User confirmation sent:", res);
-    })
-    .catch((error) => {
-      // console.error("❌ User confirmation error:", error);
-    });
-    
-    
+    emailjs
+      .send(
+        "service_w2wcbf4", // ✅ Your service ID
+        "template_lme9kr4", // ✅ Your template ID
+        {
+          name: form.name,
+          selectedDate: selectedDate.toDateString(),
+          selectedTime: selectedTime,
+          city: form.city,
+          phone: form.phone,
+          email: form.email,
+          to_email: form.email,
+          professions:
+            selectedProfessions.length > 0
+              ? selectedProfessions.join(", ")
+              : "None selected",
+          meetingLink: "https://meet.google.com/jxp-kwot-ztd",
+        },
+        "iTFILg7mO4Ndqiw8a" // ✅ Your public key
+      )
+      .then((res) => {
+        // console.log("✅ User confirmation sent:", res);
+      })
+      .catch((error) => {
+        // console.error("❌ User confirmation error:", error);
+      });
 
-  
     setShowPopup(true);
     setTimeout(() => {
       setShowPopup(false);
     }, 2500);
     setShowPaidOffer(true);
   };
-  
 
   const handlePaidSessionConfirm = () => {
     setPaidConfirmed(true);
@@ -129,7 +146,6 @@ const SessionBooking: React.FC = () => {
     //   navigate("/services/paid-session");
     // }, 2500);
   };
-  
 
   const handlePaidSessionDecline = () => {
     setShowPaidOffer(false);
@@ -185,6 +201,94 @@ const SessionBooking: React.FC = () => {
             value={form.city}
             onChange={(e) => setForm({ ...form, city: e.target.value })}
           />
+
+          {/*  this is after the city */}
+          {/* Add this after the City input field */}
+          <div className="mt-4">
+            <label className="block text-sm font-medium text-[#21204C] mb-2">
+              Select Professions of Interest (Optional)
+            </label>
+            <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto p-2 border rounded">
+              {professions.map((profession) => (
+                <label
+                  key={profession}
+                  className="flex items-center space-x-2 text-sm"
+                >
+                  <input
+                    type="checkbox"
+                    checked={selectedProfessions.includes(profession)}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setSelectedProfessions([
+                          ...selectedProfessions,
+                          profession,
+                        ]);
+                      } else {
+                        setSelectedProfessions(
+                          selectedProfessions.filter((p) => p !== profession)
+                        );
+                      }
+                    }}
+                    className="rounded border-[#d6c4f4]"
+                  />
+                  <span>{profession}</span>
+                </label>
+              ))}
+              {/* Other option */}
+              <label className="flex items-center space-x-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={showOtherInput}
+                  onChange={(e) => {
+                    setShowOtherInput(e.target.checked);
+                    if (!e.target.checked) {
+                      setOtherProfession("");
+                      // Remove any non-listed professions
+                      setSelectedProfessions(
+                        selectedProfessions.filter((p) =>
+                          professions.includes(p)
+                        )
+                      );
+                    }
+                  }}
+                  className="rounded border-[#d6c4f4]"
+                />
+                <span>Other</span>
+              </label>
+            </div>
+
+            {/* Other profession input field */}
+            {showOtherInput && (
+              <div className="mt-2">
+                <input
+                  type="text"
+                  placeholder="Please specify other profession(s)"
+                  className="w-full border px-4 py-2 rounded"
+                  value={otherProfession}
+                  onChange={(e) => {
+                    setOtherProfession(e.target.value);
+                    // Update selected professions:
+                    // 1. Keep all selected from the list
+                    const listedSelections = selectedProfessions.filter((p) =>
+                      professions.includes(p)
+                    );
+                    // 2. Add the new other profession if not empty
+                    if (e.target.value.trim()) {
+                      setSelectedProfessions([
+                        ...listedSelections,
+                        e.target.value,
+                      ]);
+                    } else {
+                      setSelectedProfessions(listedSelections);
+                    }
+                  }}
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Separate multiple professions with commas
+                </p>
+              </div>
+            )}
+          </div>
 
           <button
             onClick={(e) => {
@@ -494,7 +598,7 @@ const SessionBooking: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
           <div className="bg-white text-[#21204c] rounded-lg shadow-lg p-6 w-[90%] max-w-md text-center">
             <p className="text-lg font-medium">
-              Thank You! Session Confirmed, You will recieve a mail 
+              Thank You! Session Confirmed, You will recieve a mail
             </p>
           </div>
         </div>
@@ -533,4 +637,3 @@ const SessionBooking: React.FC = () => {
 };
 
 export default SessionBooking;
-
